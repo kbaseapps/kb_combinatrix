@@ -1,1 +1,2 @@
-pytest-cov
+pytest-cov==4.1.0
+vcrpy==6.0.0

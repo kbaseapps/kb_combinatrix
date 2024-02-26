@@ -1,2 +1,5 @@
+.github
 test_local
 sdk.cfg
+Makefile
+node_modules

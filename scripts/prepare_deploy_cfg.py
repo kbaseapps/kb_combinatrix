@@ -1,4 +1,5 @@
 """Create the deployment configuration for the module."""
+
 import os
 import os.path
 import sys
@@ -18,7 +19,6 @@ if __name__ == "__main__":
         )
         sys.exit(1)
     with open(sys.argv[1]) as file:
-        # file = open(sys.argv[1], "r")
         text = file.read()
     t = Template(text)
     config = ConfigParser()
