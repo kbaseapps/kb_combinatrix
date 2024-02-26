@@ -19,6 +19,7 @@ elif [ "${1}" = "bash" ] ; then
 elif [ "${1}" = "sh" ] ; then
   sh
 elif [ "${1}" = "report" ] ; then
+  cp ./compile_report.json work/compile_report.json
   echo ./work/compile_report.json
 else
   echo Unknown command
