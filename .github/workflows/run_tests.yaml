@@ -1,0 +1,43 @@
+on:
+    pull_request:
+        types:
+            - opened
+            - reopened
+            - synchronize
+            - closed
+
+jobs:
+    install_combinatrix_and_test:
+        strategy:
+            fail-fast: false
+            matrix:
+                python: ["3.10", "3.11", "3.12"]
+
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout git repo
+              uses: actions/checkout@v3
+
+            - name: Set up python ${{ matrix.python }}
+              uses: actions/setup-python@v4
+              with:
+                  python-version: ${{ matrix.python }}
+
+            - name: install prerequisites
+              shell: bash -l {0}
+              run: |
+                  cat requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install
+                  cat requirements-test.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install
+
+            - name: Run tests
+              shell: bash -l {0}
+              run: |
+                  sh test/run_tests.sh
+
+            - name: Send to Codecov
+              id: send_to_codecov
+              uses: codecov/codecov-action@v3
+              continue-on-error: true
+              with:
+                  files: ./python-coverage/coverage.xml
+                  fail_ci_if_error: true

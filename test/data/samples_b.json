@@ -1,0 +1,370 @@
+{
+  "copy_source_inaccessible": 0,
+  "created": "2024-01-19T20:06:59+0000",
+  "creator": "ialarmedalien",
+  "data": {
+    "description": "Sources",
+    "sample_data": [
+      {
+        "id": "e2114bfa-5716-4e70-ad17-e97c35120b5a",
+        "name": "16O.16C",
+        "node_tree": [
+          {
+            "id": "16O.16C",
+            "meta_controlled": {
+              "enigma:replicate": {
+                "value": "16.0"
+              },
+              "isotope": {
+                "value": "18O"
+              },
+              "isotopolog": {
+                "value": 962
+              },
+              "plot": {
+                "value": "16C"
+              },
+              "site": {
+                "value": 4
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_whole": {
+                "value": 8920000000
+              },
+              "bac16srrna_cn_wet_g_whole": {
+                "value": 2110000000
+              },
+              "incubation_time_days": {
+                "value": 28,
+                "units": "days"
+              },
+              "isotopolog_approach": {
+                "value": "single"
+              },
+              "isotopolog_atom_pos": {
+                "value": "1S/H2O/h1H2"
+              },
+              "isotopolog_label": {
+                "value": "natural abundance"
+              },
+              "oxygen_isotope": {
+                "value": "16O"
+              },
+              "samp_vol_we_dna_ext": {
+                "value": "10",
+                "units": "gram"
+              },
+              "temp_trt": {
+                "value": "control"
+              },
+              "unnamed:_0": {
+                "value": 1
+              },
+              "user_sample_code": {
+                "value": "APS4.16C.TP2.16O"
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "enigma:replicate",
+                "skey": "replicate",
+                "svalue": {
+                  "value": 16
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694813028,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "29a12a7b-0d5a-4bbe-887c-447e2e422374",
+        "name": "16O.16W",
+        "node_tree": [
+          {
+            "id": "16O.16W",
+            "meta_controlled": {
+              "enigma:replicate": {
+                "value": "16.0"
+              },
+              "isotope": {
+                "value": "18O"
+              },
+              "isotopolog": {
+                "value": 962
+              },
+              "plot": {
+                "value": "16W"
+              },
+              "site": {
+                "value": 4
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_whole": {
+                "value": 10400000000.0
+              },
+              "bac16srrna_cn_wet_g_whole": {
+                "value": 2470000000
+              },
+              "incubation_time_days": {
+                "value": 28,
+                "units": "days"
+              },
+              "isotopolog_approach": {
+                "value": "single"
+              },
+              "isotopolog_atom_pos": {
+                "value": "1S/H2O/h1H2"
+              },
+              "isotopolog_label": {
+                "value": "natural abundance"
+              },
+              "oxygen_isotope": {
+                "value": "16O"
+              },
+              "samp_vol_we_dna_ext": {
+                "value": "10",
+                "units": "gram"
+              },
+              "temp_trt": {
+                "value": "warmed"
+              },
+              "unnamed:_0": {
+                "value": 2
+              },
+              "user_sample_code": {
+                "value": "APS4.16W.TP2.16O"
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "enigma:replicate",
+                "skey": "replicate",
+                "svalue": {
+                  "value": 16
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694813408,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "9d8218e6-bead-4095-86fa-e205bde9b6ce",
+        "name": "18O.18C",
+        "node_tree": [
+          {
+            "id": "18O.18C",
+            "meta_controlled": {
+              "enigma:replicate": {
+                "value": "18.0"
+              },
+              "isotope": {
+                "value": "18O"
+              },
+              "isotopolog": {
+                "value": 962
+              },
+              "plot": {
+                "value": "18C"
+              },
+              "site": {
+                "value": 4
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_whole": {
+                "value": 14500000000.0
+              },
+              "bac16srrna_cn_wet_g_whole": {
+                "value": 3440000000
+              },
+              "incubation_time_days": {
+                "value": 28,
+                "units": "days"
+              },
+              "isotopolog_approach": {
+                "value": "single"
+              },
+              "isotopolog_atom_pos": {
+                "value": "1S/H2O/h1H2/i1+2"
+              },
+              "isotopolog_label": {
+                "value": "isotopically labeled"
+              },
+              "oxygen_isotope": {
+                "value": "18O"
+              },
+              "samp_vol_we_dna_ext": {
+                "value": "10",
+                "units": "gram"
+              },
+              "temp_trt": {
+                "value": "control"
+              },
+              "unnamed:_0": {
+                "value": 25
+              },
+              "user_sample_code": {
+                "value": "APS4.18C.TP2.18O"
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "enigma:replicate",
+                "skey": "replicate",
+                "svalue": {
+                  "value": 18
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694813615,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "61f23492-a0cf-44e4-8f17-b146db04b252",
+        "name": "18O.18W",
+        "node_tree": [
+          {
+            "id": "18O.18W",
+            "meta_controlled": {
+              "enigma:replicate": {
+                "value": "18.0"
+              },
+              "isotope": {
+                "value": "18O"
+              },
+              "isotopolog": {
+                "value": 962
+              },
+              "plot": {
+                "value": "18W"
+              },
+              "site": {
+                "value": 4
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_whole": {
+                "value": 19600000000.0
+              },
+              "bac16srrna_cn_wet_g_whole": {
+                "value": 4640000000
+              },
+              "incubation_time_days": {
+                "value": 28,
+                "units": "days"
+              },
+              "isotopolog_approach": {
+                "value": "single"
+              },
+              "isotopolog_atom_pos": {
+                "value": "1S/H2O/h1H2/i1+2"
+              },
+              "isotopolog_label": {
+                "value": "isotopically labeled"
+              },
+              "oxygen_isotope": {
+                "value": "18O"
+              },
+              "samp_vol_we_dna_ext": {
+                "value": "10",
+                "units": "gram"
+              },
+              "temp_trt": {
+                "value": "warmed"
+              },
+              "unnamed:_0": {
+                "value": 26
+              },
+              "user_sample_code": {
+                "value": "APS4.18W.TP2.18O"
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "enigma:replicate",
+                "skey": "replicate",
+                "svalue": {
+                  "value": 18
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694813998,
+        "user": "ialarmedalien",
+        "version": 1
+      }
+    ],
+    "samples": [
+      {
+        "id": "e2114bfa-5716-4e70-ad17-e97c35120b5a",
+        "name": "16O.16C",
+        "version": 1
+      },
+      {
+        "id": "29a12a7b-0d5a-4bbe-887c-447e2e422374",
+        "name": "16O.16W",
+        "version": 1
+      },
+      {
+        "id": "9d8218e6-bead-4095-86fa-e205bde9b6ce",
+        "name": "18O.18C",
+        "version": 1
+      },
+      {
+        "id": "61f23492-a0cf-44e4-8f17-b146db04b252",
+        "name": "18O.18W",
+        "version": 1
+      }
+    ]
+  },
+  "epoch": 1705694819152,
+  "extracted_ids": {
+    "sample": [
+      "9d8218e6-bead-4095-86fa-e205bde9b6ce",
+      "e2114bfa-5716-4e70-ad17-e97c35120b5a",
+      "29a12a7b-0d5a-4bbe-887c-447e2e422374",
+      "61f23492-a0cf-44e4-8f17-b146db04b252"
+    ]
+  },
+  "infostruct": {
+    "adminmeta": {},
+    "chsum": "64b9f7c3d7c1d1ee015822add5549108",
+    "meta": {
+      "num_samples": "4"
+    },
+    "name": "samples_b",
+    "objid": 2,
+    "path": [
+      "12345/2/1"
+    ],
+    "save_date": "2024-01-19T20:06:59+0000",
+    "saved_by": "ialarmedalien",
+    "size": 337,
+    "type": "KBaseSets.SampleSet-2.0",
+    "version": 1,
+    "workspace": "ialarmedalien:narrative_1705694499840",
+    "wsid": 12345
+  },
+  "orig_wsid": 12345,
+  "refs": []
+}

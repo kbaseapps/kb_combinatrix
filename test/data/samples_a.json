@@ -1,0 +1,1253 @@
+{
+  "copy_source_inaccessible": 0,
+  "created": "2024-01-19T20:06:47+0000",
+  "creator": "ialarmedalien",
+  "data": {
+    "description": "Samples",
+    "sample_data": [
+      {
+        "id": "0d0d2421-7525-4761-a61b-b58bd99d0835",
+        "name": "16O.16C.5",
+        "node_tree": [
+          {
+            "id": "16O.16C.5",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 27111871.84
+              },
+              "bac16srrna_cn_ul": {
+                "value": 79549.46382
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 6413234.257
+              },
+              "dna_conc_ng_ul": {
+                "value": 0
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7268178
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 0.303944752
+              },
+              "gradient_position": {
+                "value": 5
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "16O.16C"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 5
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694798727,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "af949699-32be-4309-b54c-98af5d4c2a85",
+        "name": "16O.16C.6",
+        "node_tree": [
+          {
+            "id": "16O.16C.6",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 35198813
+              },
+              "bac16srrna_cn_ul": {
+                "value": 103277.5132
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 8326176.618
+              },
+              "dna_conc_ng_ul": {
+                "value": 0
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7175099999999999
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 0.394605527
+              },
+              "gradient_position": {
+                "value": 6
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "16O.16C"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 6
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694799344,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "0f6950e7-799c-4729-bd13-b23de621d201",
+        "name": "16O.16C.8",
+        "node_tree": [
+          {
+            "id": "16O.16C.8",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 106125305.2
+              },
+              "bac16srrna_cn_ul": {
+                "value": 311384.2961
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 25103631.62
+              },
+              "dna_conc_ng_ul": {
+                "value": 0
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7030311999999999
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 1.189745574
+              },
+              "gradient_position": {
+                "value": 8
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "16O.16C"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 8
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694799728,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "8f2af4b6-af58-47e5-b87a-6feefebf6c5f",
+        "name": "16O.16C.9",
+        "node_tree": [
+          {
+            "id": "16O.16C.9",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 135762012.4
+              },
+              "bac16srrna_cn_ul": {
+                "value": 398341.9279
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 32114108.32
+              },
+              "dna_conc_ng_ul": {
+                "value": 0
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.6957918
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 1.521995655
+              },
+              "gradient_position": {
+                "value": 9
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "16O.16C"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 9
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694800362,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "f90964e3-9e32-45e8-8745-adaace936ef8",
+        "name": "16O.16W.6",
+        "node_tree": [
+          {
+            "id": "16O.16W.6",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 7261211.0370000005
+              },
+              "bac16srrna_cn_ul": {
+                "value": 97100
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 1724537.621
+              },
+              "dna_conc_ng_ul": {
+                "value": 0
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7247493999999999
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 0.069819337
+              },
+              "gradient_position": {
+                "value": 6
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "16O.16W"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 29
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694800775,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "461f1576-2655-439d-b609-e863f35dc2b0",
+        "name": "16O.16W.7",
+        "node_tree": [
+          {
+            "id": "16O.16W.7",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 6969566.102999999
+              },
+              "bac16srrna_cn_ul": {
+                "value": 93200
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 1655271.95
+              },
+              "dna_conc_ng_ul": {
+                "value": 0
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7185442
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 0.067015059
+              },
+              "gradient_position": {
+                "value": 7
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "16O.16W"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 30
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694801168,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "3633818b-727c-46e4-b4b2-9f55a72a6a80",
+        "name": "16O.16W.8",
+        "node_tree": [
+          {
+            "id": "16O.16W.8",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 16825669.24
+              },
+              "bac16srrna_cn_ul": {
+                "value": 225000
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 3996096.445
+              },
+              "dna_conc_ng_ul": {
+                "value": 0
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7113048
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 0.161785281
+              },
+              "gradient_position": {
+                "value": 8
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "16O.16W"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 31
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694801358,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "66c6bbd1-3c5f-489d-8c69-94a8c6e12e31",
+        "name": "16O.16W.9",
+        "node_tree": [
+          {
+            "id": "16O.16W.9",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 65433158.16
+              },
+              "bac16srrna_cn_ul": {
+                "value": 875000
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 15540375.06
+              },
+              "dna_conc_ng_ul": {
+                "value": 3.88845125
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7030311999999999
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 0.629164982
+              },
+              "gradient_position": {
+                "value": 9
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "16O.16W"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 32
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694801537,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "e47fcbd8-6921-4bb1-b4fb-4b8f041fa59c",
+        "name": "18O.18C.7",
+        "node_tree": [
+          {
+            "id": "18O.18C.7",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 535143189
+              },
+              "bac16srrna_cn_ul": {
+                "value": 4011057.4930000002
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 126958108.3
+              },
+              "dna_conc_ng_ul": {
+                "value": 2.1534707159999997
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7123389999999998
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 3.690642683
+              },
+              "gradient_position": {
+                "value": 7
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "18O.18C"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 548
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694801719,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "a531af3c-fb7c-4b5b-93d3-9997de789b0b",
+        "name": "18O.18C.8",
+        "node_tree": [
+          {
+            "id": "18O.18C.8",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 890660803
+              },
+              "bac16srrna_cn_ul": {
+                "value": 6675767.834
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 211301597.4
+              },
+              "dna_conc_ng_ul": {
+                "value": 5.815042291
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7061338
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 6.142488297000001
+              },
+              "gradient_position": {
+                "value": 8
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "18O.18C"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 549
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694801904,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "85137de5-22ef-4afa-a66c-8b574c57b38b",
+        "name": "18O.18C.9",
+        "node_tree": [
+          {
+            "id": "18O.18C.9",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 1828958650
+              },
+              "bac16srrna_cn_ul": {
+                "value": 13708589.49
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 433904672.8
+              },
+              "dna_conc_ng_ul": {
+                "value": 11.92705023
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.6978601999999998
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 12.61350793
+              },
+              "gradient_position": {
+                "value": 9
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "18O.18C"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 550
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694802277,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "770fc528-d185-4125-88b9-0b4960516d0a",
+        "name": "18O.18W.6",
+        "node_tree": [
+          {
+            "id": "18O.18W.6",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 282421586.5
+              },
+              "bac16srrna_cn_ul": {
+                "value": 9329781.011
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 66858987.83
+              },
+              "dna_conc_ng_ul": {
+                "value": 19.12011338
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7206126
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 1.440926462
+              },
+              "gradient_position": {
+                "value": 6
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "18O.18W"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 570
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694802655,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "37da528a-2d8a-4fce-8b60-6bb2954e7efc",
+        "name": "18O.18W.7",
+        "node_tree": [
+          {
+            "id": "18O.18W.7",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 2635110558
+              },
+              "bac16srrna_cn_ul": {
+                "value": 87050727.07
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 623822091.3
+              },
+              "dna_conc_ng_ul": {
+                "value": 21.26801885
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7133732
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 13.44444162
+              },
+              "gradient_position": {
+                "value": 7
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "18O.18W"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 571
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694803007,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "53b0daad-8a33-43b6-9cdd-497e757bfba2",
+        "name": "18O.18W.8",
+        "node_tree": [
+          {
+            "id": "18O.18W.8",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 5203679581
+              },
+              "bac16srrna_cn_ul": {
+                "value": 171903258.3
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 1231891493
+              },
+              "dna_conc_ng_ul": {
+                "value": 27.20129328
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.7113048
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 26.54938562
+              },
+              "gradient_position": {
+                "value": 8
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "18O.18W"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 572
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694803392,
+        "user": "ialarmedalien",
+        "version": 1
+      },
+      {
+        "id": "84bf91f5-7347-4740-b28e-578695ead40f",
+        "name": "18O.18W.9",
+        "node_tree": [
+          {
+            "id": "18O.18W.9",
+            "meta_controlled": {
+              "sample_template": {
+                "value": "KBASE"
+              }
+            },
+            "meta_user": {
+              "bac16srrna_cn_dry_g_fraction": {
+                "value": 7211543545
+              },
+              "bac16srrna_cn_ul": {
+                "value": 238232929.9
+              },
+              "bac16srrna_cn_wet_g_fraction": {
+                "value": 1707222553
+              },
+              "dna_conc_ng_ul": {
+                "value": 31.480539399999998
+              },
+              "fraction_or_whole": {
+                "value": "fraction"
+              },
+              "gradient_pos_density": {
+                "value": 1.6988944
+              },
+              "gradient_pos_rel_amnt": {
+                "value": 36.79358951
+              },
+              "gradient_position": {
+                "value": 9
+              },
+              "nucl_acid_amp": {
+                "value": "https://doi.org/10.1002/saj2.20159"
+              },
+              "pcr_primers": {
+                "value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"
+              },
+              "seq_meth": {
+                "value": "Illumina MiSeq [OBI:0002003]"
+              },
+              "source_mat_id": {
+                "value": "18O.18W"
+              },
+              "target_gene": {
+                "value": "16S"
+              },
+              "target_subfragment": {
+                "value": "V4, V5"
+              },
+              "unnamed:_0": {
+                "value": 573
+              }
+            },
+            "parent": null,
+            "source_meta": [
+              {
+                "key": "sample_template",
+                "skey": "sample_template",
+                "svalue": {
+                  "value": "KBASE"
+                }
+              }
+            ],
+            "type": "BioReplicate"
+          }
+        ],
+        "save_date": 1705694803754,
+        "user": "ialarmedalien",
+        "version": 1
+      }
+    ],
+    "samples": [
+      {
+        "id": "0d0d2421-7525-4761-a61b-b58bd99d0835",
+        "name": "16O.16C.5",
+        "version": 1
+      },
+      {
+        "id": "af949699-32be-4309-b54c-98af5d4c2a85",
+        "name": "16O.16C.6",
+        "version": 1
+      },
+      {
+        "id": "0f6950e7-799c-4729-bd13-b23de621d201",
+        "name": "16O.16C.8",
+        "version": 1
+      },
+      {
+        "id": "8f2af4b6-af58-47e5-b87a-6feefebf6c5f",
+        "name": "16O.16C.9",
+        "version": 1
+      },
+      {
+        "id": "f90964e3-9e32-45e8-8745-adaace936ef8",
+        "name": "16O.16W.6",
+        "version": 1
+      },
+      {
+        "id": "461f1576-2655-439d-b609-e863f35dc2b0",
+        "name": "16O.16W.7",
+        "version": 1
+      },
+      {
+        "id": "3633818b-727c-46e4-b4b2-9f55a72a6a80",
+        "name": "16O.16W.8",
+        "version": 1
+      },
+      {
+        "id": "66c6bbd1-3c5f-489d-8c69-94a8c6e12e31",
+        "name": "16O.16W.9",
+        "version": 1
+      },
+      {
+        "id": "e47fcbd8-6921-4bb1-b4fb-4b8f041fa59c",
+        "name": "18O.18C.7",
+        "version": 1
+      },
+      {
+        "id": "a531af3c-fb7c-4b5b-93d3-9997de789b0b",
+        "name": "18O.18C.8",
+        "version": 1
+      },
+      {
+        "id": "85137de5-22ef-4afa-a66c-8b574c57b38b",
+        "name": "18O.18C.9",
+        "version": 1
+      },
+      {
+        "id": "770fc528-d185-4125-88b9-0b4960516d0a",
+        "name": "18O.18W.6",
+        "version": 1
+      },
+      {
+        "id": "37da528a-2d8a-4fce-8b60-6bb2954e7efc",
+        "name": "18O.18W.7",
+        "version": 1
+      },
+      {
+        "id": "53b0daad-8a33-43b6-9cdd-497e757bfba2",
+        "name": "18O.18W.8",
+        "version": 1
+      },
+      {
+        "id": "84bf91f5-7347-4740-b28e-578695ead40f",
+        "name": "18O.18W.9",
+        "version": 1
+      }
+    ]
+  },
+  "epoch": 1705694807849,
+  "extracted_ids": {
+    "sample": [
+      "53b0daad-8a33-43b6-9cdd-497e757bfba2",
+      "84bf91f5-7347-4740-b28e-578695ead40f",
+      "3633818b-727c-46e4-b4b2-9f55a72a6a80",
+      "f90964e3-9e32-45e8-8745-adaace936ef8",
+      "66c6bbd1-3c5f-489d-8c69-94a8c6e12e31",
+      "8f2af4b6-af58-47e5-b87a-6feefebf6c5f",
+      "770fc528-d185-4125-88b9-0b4960516d0a",
+      "0d0d2421-7525-4761-a61b-b58bd99d0835",
+      "0f6950e7-799c-4729-bd13-b23de621d201",
+      "af949699-32be-4309-b54c-98af5d4c2a85",
+      "a531af3c-fb7c-4b5b-93d3-9997de789b0b",
+      "461f1576-2655-439d-b609-e863f35dc2b0",
+      "e47fcbd8-6921-4bb1-b4fb-4b8f041fa59c",
+      "85137de5-22ef-4afa-a66c-8b574c57b38b",
+      "37da528a-2d8a-4fce-8b60-6bb2954e7efc"
+    ]
+  },
+  "infostruct": {
+    "adminmeta": {},
+    "chsum": "e8f7fca109313133d6b54c91d9951d7a",
+    "meta": {
+      "num_samples": "15"
+    },
+    "name": "samples_a",
+    "objid": 1,
+    "path": [
+      "12345/1/1"
+    ],
+    "save_date": "2024-01-19T20:06:48+0000",
+    "saved_by": "ialarmedalien",
+    "size": 1192,
+    "type": "KBaseSets.SampleSet-2.0",
+    "version": 1,
+    "workspace": "ialarmedalien:narrative_1705694499840",
+    "wsid": 12345
+  },
+  "orig_wsid": 12345,
+  "refs": []
+}

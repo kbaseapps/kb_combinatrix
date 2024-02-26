@@ -1,0 +1,14 @@
+module-name:
+    KBase Combinatrix
+
+module-description:
+    The KBase Combinatrix app allows you to generate all possible combinations of your favourite KBase datasets by matching items in the dataset based on attribute values.
+
+service-language:
+    python
+
+module-version:
+    0.0.1
+
+owners:
+    [ialarmedalien]

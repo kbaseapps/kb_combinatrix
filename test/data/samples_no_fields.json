@@ -1,0 +1,127 @@
+{
+    "copy_source_inaccessible": 0,
+    "created": "2024-01-19T20:06:59+0000",
+    "creator": "ialarmedalien",
+    "data": {
+        "description": "Sources",
+        "sample_data": [
+            {
+                "id": "e2114bfa-5716-4e70-ad17-e97c35120b5a",
+                "name": "16O.16C",
+                "node_tree": [
+                    {
+                        "id": "16O.16C",
+                        "parent": null,
+                        "source_meta": [
+                            {
+                                "key": "enigma:replicate",
+                                "skey": "replicate",
+                                "svalue": {
+                                    "value": 16
+                                }
+                            }
+                        ],
+                        "type": "BioReplicate"
+                    }
+                ],
+                "save_date": 1705694813028,
+                "user": "ialarmedalien",
+                "version": 1
+            },
+            {
+                "id": "29a12a7b-0d5a-4bbe-887c-447e2e422374",
+                "name": "16O.16W",
+                "node_tree": [
+                    {
+                        "id": "16O.16W",
+                        "meta_controlled": {},
+                        "parent": null,
+                        "source_meta": [
+                            {
+                                "key": "enigma:replicate",
+                                "skey": "replicate",
+                                "svalue": {
+                                    "value": 16
+                                }
+                            }
+                        ],
+                        "type": "BioReplicate"
+                    }
+                ],
+                "save_date": 1705694813408,
+                "user": "ialarmedalien",
+                "version": 1
+            },
+            {
+                "id": "9d8218e6-bead-4095-86fa-e205bde9b6ce",
+                "name": "18O.18C",
+                "node_tree": [
+                    {
+                        "id": "18O.18C",
+                        "meta_user": {},
+                        "parent": null,
+                        "source_meta": [
+                            {
+                                "key": "enigma:replicate",
+                                "skey": "replicate",
+                                "svalue": {
+                                    "value": 18
+                                }
+                            }
+                        ],
+                        "type": "BioReplicate"
+                    }
+                ],
+                "save_date": 1705694813615,
+                "user": "ialarmedalien",
+                "version": 1
+            },
+            {
+                "id": "61f23492-a0cf-44e4-8f17-b146db04b252",
+                "name": "18O.18W",
+                "node_tree": [
+                    {
+                        "id": "18O.18W",
+                        "meta_controlled": {},
+                        "meta_user": {},
+                        "parent": null,
+                        "source_meta": [
+                            {
+                                "key": "enigma:replicate",
+                                "skey": "replicate",
+                                "svalue": {
+                                    "value": 18
+                                }
+                            }
+                        ],
+                        "type": "BioReplicate"
+                    }
+                ],
+                "save_date": 1705694813998,
+                "user": "ialarmedalien",
+                "version": 1
+            }
+        ]
+    },
+    "infostruct": {
+        "adminmeta": {},
+        "chsum": "64b9f7c3d7c1d1ee015822add5549108",
+        "meta": {
+            "num_samples": "4"
+        },
+        "name": "no_fields",
+        "objid": 3,
+        "path": [
+            "12345/3/1"
+        ],
+        "save_date": "2024-01-19T20:06:59+0000",
+        "saved_by": "ialarmedalien",
+        "size": 337,
+        "type": "KBaseSets.SampleSet-2.0",
+        "version": 1,
+        "workspace": "ialarmedalien:narrative_1705694499840",
+        "wsid": 12345
+    },
+    "orig_wsid": 12345,
+    "refs": []
+}

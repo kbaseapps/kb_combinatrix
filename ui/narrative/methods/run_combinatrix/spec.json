@@ -1,0 +1,139 @@
+{
+    "ver": "0.0.1",
+    "authors": [
+        "ialarmedalien"
+    ],
+    "contact": "",
+    "categories": [
+        "active"
+    ],
+    "widgets": {
+        "input": null,
+        "output": null
+    },
+    "parameter-groups": [
+        {
+            "id": "join_list",
+            "parameters": [
+                "t1_ref",
+                "t1_field",
+                "t2_ref",
+                "t2_field"
+            ],
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
+        }
+    ],
+    "parameters": [
+        {
+            "id": "t1_ref",
+            "text_options": {
+                "valid_ws_types": [
+                    "KBaseSets.SampleSet",
+                    "KBaseMatrices.AmpliconMatrix",
+                    "KBaseMatrices.ChemicalAbundanceMatrix",
+                    "KBaseMatrices.DifferentialExpressionMatrix",
+                    "KBaseMatrices.ExpressionMatrix",
+                    "KBaseMatrices.FitnessMatrix",
+                    "KBaseMatrices.ReactionMatrix",
+                    "KBaseMatrices.TraitMatrix"
+                ]
+            },
+            "advanced": false,
+            "default_values": [
+                ""
+            ],
+            "optional": false,
+            "allow_multiple": false,
+            "field_type": "text"
+        },
+        {
+            "id": "t2_ref",
+            "text_options": {
+                "valid_ws_types": [
+                    "KBaseSets.SampleSet",
+                    "KBaseMatrices.AmpliconMatrix",
+                    "KBaseMatrices.ChemicalAbundanceMatrix",
+                    "KBaseMatrices.DifferentialExpressionMatrix",
+                    "KBaseMatrices.ExpressionMatrix",
+                    "KBaseMatrices.FitnessMatrix",
+                    "KBaseMatrices.ReactionMatrix",
+                    "KBaseMatrices.TraitMatrix"
+                ]
+            },
+            "advanced": false,
+            "default_values": [
+                ""
+            ],
+            "optional": false,
+            "allow_multiple": false,
+            "field_type": "text"
+        },
+        {
+            "id": "t1_field",
+            "default_values": [
+                ""
+            ],
+            "advanced": false,
+            "optional": false,
+            "allow_multiple": false,
+            "field_type": "text",
+            "text_options": {
+                "validate_as": "string"
+            }
+        },
+        {
+            "id": "t2_field",
+            "default_values": [
+                ""
+            ],
+            "advanced": false,
+            "optional": false,
+            "allow_multiple": false,
+            "field_type": "text",
+            "text_options": {
+                "validate_as": "string"
+            }
+        }
+    ],
+    "behavior": {
+        "service-mapping": {
+            "url": "",
+            "name": "combinatrix",
+            "method": "run_combinatrix",
+            "input_mapping": [
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace_name"
+                },
+                {
+                    "narrative_system_variable": "workspace_id",
+                    "target_property": "workspace_id"
+                },
+                {
+                    "input_parameter": "join_list",
+                    "target_property": "join_list"
+                }
+            ],
+            "output_mapping": [
+                {
+                    "service_method_output_path": [
+                        0,
+                        "report_name"
+                    ],
+                    "target_property": "report_name"
+                },
+                {
+                    "service_method_output_path": [
+                        0,
+                        "report_ref"
+                    ],
+                    "target_property": "report_ref"
+                }
+            ]
+        }
+    },
+    "job_id_output_field": "docker"
+}

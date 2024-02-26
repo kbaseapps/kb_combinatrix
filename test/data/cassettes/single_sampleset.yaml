@@ -1,0 +1,307 @@
+interactions:
+- request:
+    body: '{"method": "Workspace.get_objects2", "params": [{"objects": [{"ref": "72724/4/1"}],
+      "ignoreErrors": 1, "infostruct": 1, "skip_external_system_updates": 1}], "version":
+      "1.1", "id": "2790884512638183"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '200'
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://appdev.kbase.us/services/ws
+  response:
+    body:
+      string: '{"version":"1.1","result":[{"data":[{"data":{"description":"Samples","samples":[{"id":"0d0d2421-7525-4761-a61b-b58bd99d0835","name":"16O.16C.5","version":1},{"id":"af949699-32be-4309-b54c-98af5d4c2a85","name":"16O.16C.6","version":1},{"id":"0f6950e7-799c-4729-bd13-b23de621d201","name":"16O.16C.8","version":1},{"id":"8f2af4b6-af58-47e5-b87a-6feefebf6c5f","name":"16O.16C.9","version":1},{"id":"f90964e3-9e32-45e8-8745-adaace936ef8","name":"16O.16W.6","version":1},{"id":"461f1576-2655-439d-b609-e863f35dc2b0","name":"16O.16W.7","version":1},{"id":"3633818b-727c-46e4-b4b2-9f55a72a6a80","name":"16O.16W.8","version":1},{"id":"66c6bbd1-3c5f-489d-8c69-94a8c6e12e31","name":"16O.16W.9","version":1},{"id":"e47fcbd8-6921-4bb1-b4fb-4b8f041fa59c","name":"18O.18C.7","version":1},{"id":"a531af3c-fb7c-4b5b-93d3-9997de789b0b","name":"18O.18C.8","version":1},{"id":"85137de5-22ef-4afa-a66c-8b574c57b38b","name":"18O.18C.9","version":1},{"id":"770fc528-d185-4125-88b9-0b4960516d0a","name":"18O.18W.6","version":1},{"id":"37da528a-2d8a-4fce-8b60-6bb2954e7efc","name":"18O.18W.7","version":1},{"id":"53b0daad-8a33-43b6-9cdd-497e757bfba2","name":"18O.18W.8","version":1},{"id":"84bf91f5-7347-4740-b28e-578695ead40f","name":"18O.18W.9","version":1}]},"infostruct":{"objid":4,"name":"Samples","type":"KBaseSets.SampleSet-2.0","save_date":"2024-01-19T20:06:48+0000","version":1,"saved_by":"ialarmedalien","wsid":72724,"workspace":"ialarmedalien:narrative_1705694499840","chsum":"e8f7fca109313133d6b54c91d9951d7a","size":1192,"meta":{"num_samples":"15"},"adminmeta":{},"path":["72724/4/1"]},"provenance":[{"time":"2024-01-19T20:06:32+0000","epoch":1705694792000,"service":"sample_uploader","service_ver":"20e60df2dfa54b90ba25dad4110cea5d0123754e","method":"import_samples","method_params":[{"share_within_workspace":1,"incl_input_in_output":1,"header_row_index":null,"description":"Samples","otu_prefix":"OTU","propagate_links":0,"sample_file":"Samples.csv","workspace_id":72724,"ignore_warnings":1,"prevalidate":1,"set_name":"Samples","output_format":null,"num_otus":20,"sample_set_ref":null,"incl_seq":0,"name_field":null,"workspace_name":"ialarmedalien:narrative_1705694499840","file_format":"kbase","keep_existing_samples":1,"taxonomy_source":"n/a"}],"input_ws_objects":[],"resolved_ws_objects":[],"intermediate_incoming":[],"intermediate_outgoing":[],"external_data":[],"subactions":[{"name":"sample_uploader","ver":"20e60df2dfa54b90ba25dad4110cea5d0123754e","code_url":"https://github.com/kbaseapps/sample_uploader/","commit":"20e60df2dfa54b90ba25dad4110cea5d0123754e"},{"name":"DataFileUtil","ver":"release","code_url":"https://github.com/kbaseapps/DataFileUtil","commit":"ee7670582db65adee442f052a52444a0d84a52a0"}],"custom":{},"description":"KBase
+        SDK method run via the KBase Execution Engine"}],"creator":"ialarmedalien","orig_wsid":72724,"created":"2024-01-19T20:06:47+0000","epoch":1705694807849,"refs":[],"copy_source_inaccessible":0,"extracted_ids":{"sample":["53b0daad-8a33-43b6-9cdd-497e757bfba2","84bf91f5-7347-4740-b28e-578695ead40f","3633818b-727c-46e4-b4b2-9f55a72a6a80","f90964e3-9e32-45e8-8745-adaace936ef8","66c6bbd1-3c5f-489d-8c69-94a8c6e12e31","8f2af4b6-af58-47e5-b87a-6feefebf6c5f","770fc528-d185-4125-88b9-0b4960516d0a","0d0d2421-7525-4761-a61b-b58bd99d0835","0f6950e7-799c-4729-bd13-b23de621d201","af949699-32be-4309-b54c-98af5d4c2a85","a531af3c-fb7c-4b5b-93d3-9997de789b0b","461f1576-2655-439d-b609-e863f35dc2b0","e47fcbd8-6921-4bb1-b4fb-4b8f041fa59c","85137de5-22ef-4afa-a66c-8b574c57b38b","37da528a-2d8a-4fce-8b60-6bb2954e7efc"]}}]}]}'
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization
+      Access-Control-Allow-Origin:
+      - '*'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 859b021ff86ff947-SJC
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 22 Feb 2024 23:28:56 GMT
+      Server:
+      - cloudflare
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"method": "SampleService.get_samples", "params": [{"samples": [{"id":
+      "0d0d2421-7525-4761-a61b-b58bd99d0835", "version": 1}, {"id": "af949699-32be-4309-b54c-98af5d4c2a85",
+      "version": 1}, {"id": "0f6950e7-799c-4729-bd13-b23de621d201", "version": 1},
+      {"id": "8f2af4b6-af58-47e5-b87a-6feefebf6c5f", "version": 1}, {"id": "f90964e3-9e32-45e8-8745-adaace936ef8",
+      "version": 1}, {"id": "461f1576-2655-439d-b609-e863f35dc2b0", "version": 1},
+      {"id": "3633818b-727c-46e4-b4b2-9f55a72a6a80", "version": 1}, {"id": "66c6bbd1-3c5f-489d-8c69-94a8c6e12e31",
+      "version": 1}, {"id": "e47fcbd8-6921-4bb1-b4fb-4b8f041fa59c", "version": 1},
+      {"id": "a531af3c-fb7c-4b5b-93d3-9997de789b0b", "version": 1}, {"id": "85137de5-22ef-4afa-a66c-8b574c57b38b",
+      "version": 1}, {"id": "770fc528-d185-4125-88b9-0b4960516d0a", "version": 1},
+      {"id": "37da528a-2d8a-4fce-8b60-6bb2954e7efc", "version": 1}, {"id": "53b0daad-8a33-43b6-9cdd-497e757bfba2",
+      "version": 1}, {"id": "84bf91f5-7347-4740-b28e-578695ead40f", "version": 1}]}],
+      "version": "1.1"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1060'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://appdev.kbase.us/services/sampleservice
+  response:
+    body:
+      string: '{"version": "1.1", "result": [[{"id": "0d0d2421-7525-4761-a61b-b58bd99d0835",
+        "user": "ialarmedalien", "name": "16O.16C.5", "node_tree": [{"id": "16O.16C.5",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 0.303944752},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 5}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 27111871.84},
+        "source_mat_id": {"value": "16O.16C"}, "gradient_pos_density": {"value": 1.7268178},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        79549.46382}, "bac16srrna_cn_wet_g_fraction": {"value": 6413234.257}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 0}, "gradient_position": {"value": 5}}, "source_meta":
+        [{"key": "sample_template", "skey": "sample_template", "svalue": {"value":
+        "KBASE"}}]}], "save_date": 1705694798727, "version": 1}, {"id": "af949699-32be-4309-b54c-98af5d4c2a85",
+        "user": "ialarmedalien", "name": "16O.16C.6", "node_tree": [{"id": "16O.16C.6",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 0.394605527},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 6}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 35198813},
+        "source_mat_id": {"value": "16O.16C"}, "gradient_pos_density": {"value": 1.7175099999999999},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        103277.5132}, "bac16srrna_cn_wet_g_fraction": {"value": 8326176.618}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 0}, "gradient_position": {"value": 6}}, "source_meta":
+        [{"key": "sample_template", "skey": "sample_template", "svalue": {"value":
+        "KBASE"}}]}], "save_date": 1705694799344, "version": 1}, {"id": "0f6950e7-799c-4729-bd13-b23de621d201",
+        "user": "ialarmedalien", "name": "16O.16C.8", "node_tree": [{"id": "16O.16C.8",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 1.189745574},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 8}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 106125305.2},
+        "source_mat_id": {"value": "16O.16C"}, "gradient_pos_density": {"value": 1.7030311999999999},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        311384.2961}, "bac16srrna_cn_wet_g_fraction": {"value": 25103631.62}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 0}, "gradient_position": {"value": 8}}, "source_meta":
+        [{"key": "sample_template", "skey": "sample_template", "svalue": {"value":
+        "KBASE"}}]}], "save_date": 1705694799728, "version": 1}, {"id": "8f2af4b6-af58-47e5-b87a-6feefebf6c5f",
+        "user": "ialarmedalien", "name": "16O.16C.9", "node_tree": [{"id": "16O.16C.9",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 1.521995655},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 9}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 135762012.4},
+        "source_mat_id": {"value": "16O.16C"}, "gradient_pos_density": {"value": 1.6957918},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        398341.9279}, "bac16srrna_cn_wet_g_fraction": {"value": 32114108.32}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 0}, "gradient_position": {"value": 9}}, "source_meta":
+        [{"key": "sample_template", "skey": "sample_template", "svalue": {"value":
+        "KBASE"}}]}], "save_date": 1705694800362, "version": 1}, {"id": "f90964e3-9e32-45e8-8745-adaace936ef8",
+        "user": "ialarmedalien", "name": "16O.16W.6", "node_tree": [{"id": "16O.16W.6",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 0.069819337},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 29}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 7261211.0370000005},
+        "source_mat_id": {"value": "16O.16W"}, "gradient_pos_density": {"value": 1.7247493999999999},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        97100}, "bac16srrna_cn_wet_g_fraction": {"value": 1724537.621}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 0}, "gradient_position": {"value": 6}}, "source_meta":
+        [{"key": "sample_template", "skey": "sample_template", "svalue": {"value":
+        "KBASE"}}]}], "save_date": 1705694800775, "version": 1}, {"id": "461f1576-2655-439d-b609-e863f35dc2b0",
+        "user": "ialarmedalien", "name": "16O.16W.7", "node_tree": [{"id": "16O.16W.7",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 0.067015059},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 30}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 6969566.102999999},
+        "source_mat_id": {"value": "16O.16W"}, "gradient_pos_density": {"value": 1.7185442},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        93200}, "bac16srrna_cn_wet_g_fraction": {"value": 1655271.95}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 0}, "gradient_position": {"value": 7}}, "source_meta":
+        [{"key": "sample_template", "skey": "sample_template", "svalue": {"value":
+        "KBASE"}}]}], "save_date": 1705694801168, "version": 1}, {"id": "3633818b-727c-46e4-b4b2-9f55a72a6a80",
+        "user": "ialarmedalien", "name": "16O.16W.8", "node_tree": [{"id": "16O.16W.8",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 0.161785281},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 31}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 16825669.24},
+        "source_mat_id": {"value": "16O.16W"}, "gradient_pos_density": {"value": 1.7113048},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        225000}, "bac16srrna_cn_wet_g_fraction": {"value": 3996096.445}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 0}, "gradient_position": {"value": 8}}, "source_meta":
+        [{"key": "sample_template", "skey": "sample_template", "svalue": {"value":
+        "KBASE"}}]}], "save_date": 1705694801358, "version": 1}, {"id": "66c6bbd1-3c5f-489d-8c69-94a8c6e12e31",
+        "user": "ialarmedalien", "name": "16O.16W.9", "node_tree": [{"id": "16O.16W.9",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 0.629164982},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 32}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 65433158.16},
+        "source_mat_id": {"value": "16O.16W"}, "gradient_pos_density": {"value": 1.7030311999999999},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        875000}, "bac16srrna_cn_wet_g_fraction": {"value": 15540375.06}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 3.88845125}, "gradient_position": {"value": 9}},
+        "source_meta": [{"key": "sample_template", "skey": "sample_template", "svalue":
+        {"value": "KBASE"}}]}], "save_date": 1705694801537, "version": 1}, {"id":
+        "e47fcbd8-6921-4bb1-b4fb-4b8f041fa59c", "user": "ialarmedalien", "name": "18O.18C.7",
+        "node_tree": [{"id": "18O.18C.7", "type": "BioReplicate", "parent": null,
+        "meta_controlled": {"sample_template": {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt":
+        {"value": 3.690642683}, "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 548}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 535143189},
+        "source_mat_id": {"value": "18O.18C"}, "gradient_pos_density": {"value": 1.7123389999999998},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        4011057.4930000002}, "bac16srrna_cn_wet_g_fraction": {"value": 126958108.3},
+        "seq_meth": {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value":
+        "https://doi.org/10.1002/saj2.20159"}, "dna_conc_ng_ul": {"value": 2.1534707159999997},
+        "gradient_position": {"value": 7}}, "source_meta": [{"key": "sample_template",
+        "skey": "sample_template", "svalue": {"value": "KBASE"}}]}], "save_date":
+        1705694801719, "version": 1}, {"id": "a531af3c-fb7c-4b5b-93d3-9997de789b0b",
+        "user": "ialarmedalien", "name": "18O.18C.8", "node_tree": [{"id": "18O.18C.8",
+        "type": "BioReplicate", "parent": null, "meta_controlled": {"sample_template":
+        {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt": {"value": 6.142488297000001},
+        "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 549}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 890660803},
+        "source_mat_id": {"value": "18O.18C"}, "gradient_pos_density": {"value": 1.7061338},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        6675767.834}, "bac16srrna_cn_wet_g_fraction": {"value": 211301597.4}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 5.815042291}, "gradient_position": {"value": 8}},
+        "source_meta": [{"key": "sample_template", "skey": "sample_template", "svalue":
+        {"value": "KBASE"}}]}], "save_date": 1705694801904, "version": 1}, {"id":
+        "85137de5-22ef-4afa-a66c-8b574c57b38b", "user": "ialarmedalien", "name": "18O.18C.9",
+        "node_tree": [{"id": "18O.18C.9", "type": "BioReplicate", "parent": null,
+        "meta_controlled": {"sample_template": {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt":
+        {"value": 12.61350793}, "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 550}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 1828958650},
+        "source_mat_id": {"value": "18O.18C"}, "gradient_pos_density": {"value": 1.6978601999999998},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        13708589.49}, "bac16srrna_cn_wet_g_fraction": {"value": 433904672.8}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 11.92705023}, "gradient_position": {"value": 9}},
+        "source_meta": [{"key": "sample_template", "skey": "sample_template", "svalue":
+        {"value": "KBASE"}}]}], "save_date": 1705694802277, "version": 1}, {"id":
+        "770fc528-d185-4125-88b9-0b4960516d0a", "user": "ialarmedalien", "name": "18O.18W.6",
+        "node_tree": [{"id": "18O.18W.6", "type": "BioReplicate", "parent": null,
+        "meta_controlled": {"sample_template": {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt":
+        {"value": 1.440926462}, "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 570}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 282421586.5},
+        "source_mat_id": {"value": "18O.18W"}, "gradient_pos_density": {"value": 1.7206126},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        9329781.011}, "bac16srrna_cn_wet_g_fraction": {"value": 66858987.83}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 19.12011338}, "gradient_position": {"value": 6}},
+        "source_meta": [{"key": "sample_template", "skey": "sample_template", "svalue":
+        {"value": "KBASE"}}]}], "save_date": 1705694802655, "version": 1}, {"id":
+        "37da528a-2d8a-4fce-8b60-6bb2954e7efc", "user": "ialarmedalien", "name": "18O.18W.7",
+        "node_tree": [{"id": "18O.18W.7", "type": "BioReplicate", "parent": null,
+        "meta_controlled": {"sample_template": {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt":
+        {"value": 13.44444162}, "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 571}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 2635110558},
+        "source_mat_id": {"value": "18O.18W"}, "gradient_pos_density": {"value": 1.7133732},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        87050727.07}, "bac16srrna_cn_wet_g_fraction": {"value": 623822091.3}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 21.26801885}, "gradient_position": {"value": 7}},
+        "source_meta": [{"key": "sample_template", "skey": "sample_template", "svalue":
+        {"value": "KBASE"}}]}], "save_date": 1705694803007, "version": 1}, {"id":
+        "53b0daad-8a33-43b6-9cdd-497e757bfba2", "user": "ialarmedalien", "name": "18O.18W.8",
+        "node_tree": [{"id": "18O.18W.8", "type": "BioReplicate", "parent": null,
+        "meta_controlled": {"sample_template": {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt":
+        {"value": 26.54938562}, "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 572}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 5203679581},
+        "source_mat_id": {"value": "18O.18W"}, "gradient_pos_density": {"value": 1.7113048},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        171903258.3}, "bac16srrna_cn_wet_g_fraction": {"value": 1231891493}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 27.20129328}, "gradient_position": {"value": 8}},
+        "source_meta": [{"key": "sample_template", "skey": "sample_template", "svalue":
+        {"value": "KBASE"}}]}], "save_date": 1705694803392, "version": 1}, {"id":
+        "84bf91f5-7347-4740-b28e-578695ead40f", "user": "ialarmedalien", "name": "18O.18W.9",
+        "node_tree": [{"id": "18O.18W.9", "type": "BioReplicate", "parent": null,
+        "meta_controlled": {"sample_template": {"value": "KBASE"}}, "meta_user": {"gradient_pos_rel_amnt":
+        {"value": 36.79358951}, "pcr_primers": {"value": "FWD:GTGYCAGCMGCCGCGGTAA;REV:GGACTACNVGGGTWTCTAAT"},
+        "unnamed:_0": {"value": 573}, "target_gene": {"value": "16S"}, "target_subfragment":
+        {"value": "V4, V5"}, "bac16srrna_cn_dry_g_fraction": {"value": 7211543545},
+        "source_mat_id": {"value": "18O.18W"}, "gradient_pos_density": {"value": 1.6988944},
+        "fraction_or_whole": {"value": "fraction"}, "bac16srrna_cn_ul": {"value":
+        238232929.9}, "bac16srrna_cn_wet_g_fraction": {"value": 1707222553}, "seq_meth":
+        {"value": "Illumina MiSeq [OBI:0002003]"}, "nucl_acid_amp": {"value": "https://doi.org/10.1002/saj2.20159"},
+        "dna_conc_ng_ul": {"value": 31.480539399999998}, "gradient_position": {"value":
+        9}}, "source_meta": [{"key": "sample_template", "skey": "sample_template",
+        "svalue": {"value": "KBASE"}}]}], "save_date": 1705694803754, "version": 1}]],
+        "id": "efda9588-b894-46fd-b923-a1bb0b9197a2"}'
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization
+      Access-Control-Allow-Origin:
+      - '*'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 859b02210b979644-SJC
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 22 Feb 2024 23:28:57 GMT
+      Server:
+      - cloudflare
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    status:
+      code: 200
+      message: OK
+version: 1

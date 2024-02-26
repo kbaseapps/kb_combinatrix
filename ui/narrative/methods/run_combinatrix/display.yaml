@@ -1,0 +1,47 @@
+name: Data Combinatrix
+
+tooltip: |
+    Combine sample and tabular datasets to view all possible combinations.
+
+screenshots: []
+
+icon: icon.png
+
+parameter-groups:
+    join_list:
+        ui-name: Datasets to combine
+        short-hint: Pairs of datasets to combine
+        long-hint: |
+        A list of pairs of data sets to combine to create the megatable.
+
+        If you want to combine more than two tables, you will need to enter each pair of tables separately. For example, if you want to combine dataset A with dataset B by matching A's 'sample ID' with B's 'parent sample ID', and then combine dataset B with dataset C by matching B's 'temperature' with C's 'ambient_temp', you would add two parameter sets:
+
+        dataset: A, field: 'sample ID', dataset: B, field: 'parent_sample_ID'
+
+        dataset: B, field: 'temperature', dataset: C, field: 'ambient_temp'
+
+        If one of the datasets is a matrix, the field name should be either 'column ID' or 'row ID'.
+
+parameters :
+    t1_ref:
+        ui-name: join this dataset
+        short-hint: A data set to combine with the base data set.
+        long-hint: A data set to combine with the base data set.
+
+    t1_field:
+        ui-name: field name within the dataset
+        short-hint: Join data sets on...
+        long-hint: Join this data set to the other dataset using this field. If the dataset is a matrix, the match field should be set to 'column ID' or 'row ID', whichever is appropriate.
+
+    t2_ref:
+        ui-name: to this dataset
+        short-hint: A data set to combine with the base data set.
+        long-hint: A data set to combine with the base data set.
+
+    t2_field:
+        ui-name: field name within the dataset to join on
+        short-hint: Join data sets on...
+        long-hint: Join this data set to the other dataset using this field. If the dataset is a matrix, the match field should be set to 'column ID' or 'row ID', whichever is appropriate.
+
+description : |
+    <p>This app can be used to generate and view the combinations possible by combining datasets by matching a field in one dataset to a (potentially different) field in another dataset.</p>

@@ -1,0 +1,50 @@
+interactions:
+- request:
+    body: '{"method": "Workspace.get_objects2", "params": [{"objects": [{"ref": "1/2/3"},
+      {"ref": "4/5/6"}], "ignoreErrors": 1, "infostruct": 1, "skip_external_system_updates":
+      1}], "version": "1.1", "id": "4908028103787808"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '214'
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://appdev.kbase.us/services/ws
+  response:
+    body:
+      string: '{"version":"1.1","result":[{"data":[null,null]}]}'
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization
+      Access-Control-Allow-Origin:
+      - '*'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 859b021cde439e6e-SJC
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 22 Feb 2024 23:28:55 GMT
+      Server:
+      - cloudflare
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,0 +1,74 @@
+{
+    "fieldnames": [
+        "bac16srrna_cn_dry_g_whole",
+        "bac16srrna_cn_wet_g_whole",
+        "enigma:replicate",
+        "id",
+        "incubation_time_days",
+        "isotope",
+        "isotopolog_approach",
+        "isotopolog_atom_pos",
+        "isotopolog_label",
+        "isotopolog",
+        "name",
+        "oxygen_isotope",
+        "plot",
+        "samp_vol_we_dna_ext",
+        "save_date",
+        "site",
+        "temp_trt",
+        "type",
+        "unnamed:_0",
+        "user_sample_code",
+        "user",
+        "version"
+    ],
+    "keys": {
+        "user": [
+            "bac16srrna_cn_dry_g_whole",
+            "bac16srrna_cn_wet_g_whole",
+            "incubation_time_days",
+            "isotope",
+            "isotopolog",
+            "isotopolog_approach",
+            "isotopolog_atom_pos",
+            "isotopolog_label",
+            "oxygen_isotope",
+            "plot",
+            "samp_vol_we_dna_ext",
+            "site",
+            "temp_trt",
+            "unnamed:_0",
+            "user_sample_code"
+        ],
+        "controlled": [
+            "enigma:replicate"
+        ]
+    },
+    "dict_list": [
+        {
+            "id": "e2114bfa-5716-4e70-ad17-e97c35120b5a",
+            "name": "16O.16C",
+            "enigma:replicate": "18.0",
+            "bac16srrna_cn_dry_g_whole": 14500000000.0,
+            "bac16srrna_cn_wet_g_whole": 3440000000,
+            "incubation_time_days": "28 days",
+            "isotope": "18O",
+            "isotopolog": 962,
+            "isotopolog_approach": "single",
+            "isotopolog_atom_pos": "1S/H2O/h1H2/i1+2",
+            "isotopolog_label": "isotopically labeled",
+            "oxygen_isotope": "18O",
+            "plot": "18C",
+            "samp_vol_we_dna_ext": "10 gram",
+            "site": 4,
+            "temp_trt": "control",
+            "unnamed:_0": 25,
+            "user_sample_code": "APS4.18C.TP2.18O",
+            "type": "BioReplicate",
+            "save_date": 1705694813998,
+            "user": "ialarmedalien",
+            "version": 1
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+interactions:
+- request:
+    body: '{"method": "Workspace.get_objects2", "params": [{"objects": [{"ref": "1/2/3"},
+      {"ref": "72724/11/1"}], "ignoreErrors": 1, "infostruct": 1, "skip_external_system_updates":
+      1}], "version": "1.1", "id": "42129146449530763"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '220'
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://appdev.kbase.us/services/ws
+  response:
+    body:
+      string: '{"version":"1.1","result":[{"data":[null,{"data":{"amplicon_type":"16S","col_attributemapping_ref":"72724/10/1","col_mapping":{"16O.16C.5":"16O.16C.5","16O.16C.6":"16O.16C.6","16O.16C.8":"16O.16C.8","16O.16C.9":"16O.16C.9","16O.16W.6":"16O.16W.6","16O.16W.7":"16O.16W.7","16O.16W.8":"16O.16W.8","16O.16W.9":"16O.16W.9","18O.18C.7":"18O.18C.7","18O.18C.8":"18O.18C.8","18O.18C.9":"18O.18C.9","18O.18W.6":"18O.18W.6","18O.18W.7":"18O.18W.7","18O.18W.8":"18O.18W.8","18O.18W.9":"18O.18W.9"},"data":{"col_ids":["16O.16C.5","16O.16C.6","16O.16C.8","16O.16C.9","16O.16W.6","16O.16W.7","16O.16W.8","16O.16W.9","18O.18C.7","18O.18C.8","18O.18C.9","18O.18W.6","18O.18W.7","18O.18W.8","18O.18W.9"],"row_ids":["002200083937d05914858b51aba09591","005997c557d58b6d481c505620a49dd4","0098f177d98b46bfd219cb1b96411b3a","00de18386af8215012d546ccb03a69c3","0119003321bca56cfda9840e5bf6cd32","0157f81bf552e6ba40941f632ba34797","01664c43512ac034e62fde14e27271f5","017ad37b9a3fd3480121b1da4abc1312","02026822bbf289288479cd7bd308df0e","0235ae3e2a8867ad8699d1dc535c349d"],"values":[[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.0,0.0,0.0,0.0,0.0],[29.0,103.0,75.0,155.0,105.0,38.0,20.0,65.0,219.0,135.0,125.0,39.0,37.0,24.0,43.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0],[0.0,0.0,14.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,402.0,189.0,161.0,143.0,190.0,0.0,0.0],[0.0,0.0,8.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,6.0,43.0],[0.0,24.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,3.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]]},"denoise_method":"dada2","sample_set_ref":"72724/4/1","scale":"raw","sequence_error_cutoff":2.0,"sequencing_file_handle":"KBH_229520","sequencing_instrument":"Illumina
+        MiSeq","sequencing_technology":"Illumina","target_gene":"16S","target_subfragment":["V4","V5"],"taxon_calling_method":["denoising"]},"infostruct":{"objid":11,"name":"amplicons","type":"KBaseMatrices.AmpliconMatrix-10.0","save_date":"2024-01-22T20:11:08+0000","version":1,"saved_by":"ialarmedalien","wsid":72724,"workspace":"ialarmedalien:narrative_1705694499840","chsum":"c5722fc5676337c1fe084e4f9259c7c9","size":1968,"meta":{"amplicon_count":"10","condition_count":"15","col_attribute_mapping":"72724/10/1","scale":"raw","amplicon_type":"16S","sequencing_technology":"Illumina","sequencing_instrument":"Illumina
+        MiSeq","taxon_calling_method_count":"1","target_subfragment_count":"2","sequence_error_cutoff":"2.0","target_gene":"16S","denoise_method":"dada2"},"adminmeta":{},"path":["72724/11/1"]},"provenance":[{"time":"2024-01-22T20:10:01+0000","epoch":1705954201000,"service":"GenericsAPI","service_ver":"2d68b13be4bf7278817cbfef949777a03ea1bda7","method":"import_matrix_from_biom","method_params":[{"target_subfragment":["V4","V5"],"library_layout":null,"barcode_error_rate":null,"sequencing_date":null,"read_length_cutoff":null,"scale":"raw","description":null,"sequencing_instrument":"Illumina
+        MiSeq","workspace_id":72724,"chimera_detection_and_removal":null,"matrix_name":"amplicons","obj_type":"AmpliconMatrix","pcr_primers":null,"row_attributemapping_ref":null,"amplicon_type":"16S","taxon_calling":{"clustering_cutoff":null,"taxon_calling_method":["denoising"],"sequence_error_cutoff":2,"denoise_method":"dada2","clustering_method":""},"metadata_keys":null,"extraction":null,"sequencing_technology":"Illumina","read_pairing":null,"amplification":null,"sequencing_quality_filter_cutoff":null,"taxonomic_abundance_tsv":"amplicon_matrix.csv","sample_set_ref":"72724/4/1","target_gene":"16S","sequencing_center":null,"taxonomic_fasta":"RepresentativeSeqs.fasta","library_kit":null,"col_attributemapping_ref":null,"library_screening_strategy":null,"reads_set_ref":[]}],"input_ws_objects":["72724/4/1"],"resolved_ws_objects":["72724/4/1"],"intermediate_incoming":[],"intermediate_outgoing":[],"external_data":[],"subactions":[{"name":"GenericsAPI","ver":"2d68b13be4bf7278817cbfef949777a03ea1bda7","code_url":"https://github.com/kbaseapps/GenericsAPI","commit":"2d68b13be4bf7278817cbfef949777a03ea1bda7"},{"name":"DataFileUtil","ver":"release","code_url":"https://github.com/kbaseapps/DataFileUtil","commit":"ee7670582db65adee442f052a52444a0d84a52a0"}],"custom":{},"description":"KBase
+        SDK method run via the KBase Execution Engine"}],"creator":"ialarmedalien","orig_wsid":72724,"created":"2024-01-22T20:11:08+0000","epoch":1705954268755,"refs":["72724/10/1","72724/4/1"],"copy_source_inaccessible":0,"extracted_ids":{"handle":["KBH_229520"]}}]}]}'
+    headers:
+      Access-Control-Allow-Headers:
+      - authorization
+      Access-Control-Allow-Origin:
+      - '*'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 859b021ddfc267fb-SJC
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 22 Feb 2024 23:28:56 GMT
+      Server:
+      - cloudflare
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    status:
+      code: 200
+      message: OK
+version: 1

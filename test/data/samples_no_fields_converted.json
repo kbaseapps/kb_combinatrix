@@ -1,0 +1,48 @@
+{
+    "fieldnames": [
+        "id",
+        "name",
+        "save_date",
+        "type",
+        "user",
+        "version"
+    ],
+    "keys": {
+        "user": [],
+        "controlled": []
+    },
+    "dict_list": [
+        {
+            "id": "e2114bfa-5716-4e70-ad17-e97c35120b5a",
+            "name": "16O.16C",
+            "type": "BioReplicate",
+            "save_date": 1705694813028,
+            "user": "ialarmedalien",
+            "version": 1
+        },
+        {
+            "id": "29a12a7b-0d5a-4bbe-887c-447e2e422374",
+            "name": "16O.16W",
+            "type": "BioReplicate",
+            "save_date": 1705694813408,
+            "user": "ialarmedalien",
+            "version": 1
+        },
+        {
+            "id": "9d8218e6-bead-4095-86fa-e205bde9b6ce",
+            "name": "18O.18C",
+            "type": "BioReplicate",
+            "save_date": 1705694813615,
+            "user": "ialarmedalien",
+            "version": 1
+        },
+        {
+            "id": "61f23492-a0cf-44e4-8f17-b146db04b252",
+            "name": "18O.18W",
+            "type": "BioReplicate",
+            "save_date": 1705694813998,
+            "user": "ialarmedalien",
+            "version": 1
+        }
+    ]
+}
