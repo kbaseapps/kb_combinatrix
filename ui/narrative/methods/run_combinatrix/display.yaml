@@ -11,16 +11,13 @@ parameter-groups:
     join_list:
         ui-name: Datasets to combine
         short-hint: Pairs of datasets to combine
-        long-hint: |
-        A list of pairs of data sets to combine to create the megatable.
+        long-hint: <p>A list of pairs of data sets to combine to create the megatable. If one of the datasets is a matrix, the field name should be either 'column ID' or 'row ID'. If you want to combine more than two tables, you will need to enter each pair of tables separately. For example, if you want to combine dataset A with dataset B by matching A's 'sample ID' with B's 'parent sample ID', and then combine dataset B with dataset C by matching B's 'temperature' with C's 'ambient_temp', you would add two parameter sets: one specifying the join between datasets A and B, and the other specifying the join between B and C.</p>
 
-        If you want to combine more than two tables, you will need to enter each pair of tables separately. For example, if you want to combine dataset A with dataset B by matching A's 'sample ID' with B's 'parent sample ID', and then combine dataset B with dataset C by matching B's 'temperature' with C's 'ambient_temp', you would add two parameter sets:
-
-        dataset: A, field: 'sample ID', dataset: B, field: 'parent_sample_ID'
-
-        dataset: B, field: 'temperature', dataset: C, field: 'ambient_temp'
-
-        If one of the datasets is a matrix, the field name should be either 'column ID' or 'row ID'.
+#        dataset: A, field: 'sample ID', dataset: B, field: 'parent_sample_ID'
+#
+#        dataset: B, field: 'temperature', dataset: C, field: 'ambient_temp'
+#
+#        If one of the datasets is a matrix, the field name should be either 'column ID' or 'row ID'.
 
 parameters :
     t1_ref:
