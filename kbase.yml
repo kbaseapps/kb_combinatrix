@@ -1,5 +1,5 @@
 module-name:
-    KBase Combinatrix
+    KB_Combinatrix
 
 module-description:
     The KBase Combinatrix app allows you to generate all possible combinations of your favourite KBase datasets by matching items in the dataset based on attribute values.
