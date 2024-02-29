@@ -1,5 +1,7 @@
 #!/bin/sh
 
+pwd
+
 if [ -f ./work/token ] ; then
   export KB_AUTH_TOKEN=$(<./work/token)
 fi
