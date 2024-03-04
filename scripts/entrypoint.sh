@@ -1,14 +1,8 @@
 #!/bin/sh
 
-pwd
-
 if [ -f ./work/token ] ; then
   export KB_AUTH_TOKEN=$(<./work/token)
 fi
-
-env
-ls -al /kb/module
-ls -al -r /kb/module/lib
 
 if [ $# -eq 0 ] ; then
   echo "No args supplied. Running start_server.sh"
