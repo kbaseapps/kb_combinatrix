@@ -17,6 +17,8 @@ if __name__ == "__main__":
         )
         sys.exit(1)
 
+    print("kicking off the prepare_deploy_config script!")
+
     with open(sys.argv[1]) as file:
         text = file.read()
     t = Template(text)

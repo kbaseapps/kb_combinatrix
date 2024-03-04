@@ -7,9 +7,11 @@ if [ -f ./work/token ] ; then
 fi
 
 if [ $# -eq 0 ] ; then
+  echo "No args supplied. Running start_server.sh"
   python ./scripts/prepare_deploy_cfg.py ./deploy.cfg ./work/config.properties
   sh ./scripts/start_server.sh
 elif [ "${1}" = "async" ] ; then
+  echo "async supplied. Running scripts/run_async"
   python ./scripts/prepare_deploy_cfg.py ./deploy.cfg ./work/config.properties
   sh ./scripts/run_async.sh
 elif [ "${1}" = "test" ] ; then
@@ -24,5 +26,5 @@ elif [ "${1}" = "report" ] ; then
   cp ./compile_report.json work/compile_report.json
   echo ./work/compile_report.json
 else
-  echo Unknown command
+  echo Unknown command: ${1}
 fi
