@@ -4,7 +4,7 @@ from test.conftest import TEST_UPA, paramify
 from typing import Any
 
 import pytest
-from combinatrix.combinatrix import combine_data
+from combinatrix.combination_harvester import combine_data
 from combinatrix.constants import (
     DL,
     FIELD,

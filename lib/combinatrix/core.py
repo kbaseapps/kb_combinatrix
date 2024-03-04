@@ -4,11 +4,8 @@ import os
 import time
 from typing import Any
 
-from combinatrix.combinatrix import combine_data
+from combinatrix.combination_harvester import combine_data
 from combinatrix.constants import (
-    DATA,
-    DL,
-    FN,
     INFO,
     JOIN_LIST,
     KEYS,
@@ -17,7 +14,6 @@ from combinatrix.constants import (
 )
 from combinatrix.converter import (
     convert_data,
-    convert_list_of_dicts_to_list_of_lists,
     save_as_csv,
 )
 from combinatrix.fetcher import DataFetcher
@@ -103,10 +99,6 @@ class AppCore:
                 ref: {
                     "info": standardised_data[ref][INFO],
                     "file": standardised_data[ref]["csv"],
-                    # DATA: convert_list_of_dicts_to_list_of_lists(
-                    #     standardised_data[ref][DL],
-                    #     standardised_data[ref][FN],
-                    # ),
                     "display": {
                         "type": get_data_type(standardised_data[ref]),
                         KEYS: (

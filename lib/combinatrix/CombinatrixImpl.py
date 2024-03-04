@@ -66,10 +66,6 @@ class combinatrix:
             err_msg = "Combinatrix encountered the following errors:\nthe environment variable SDK_CALLBACK_URL must be set"
             raise RuntimeError(err_msg)
 
-        if "jellybean" not in self.config:
-            err_msg = "No jellybeans found"
-            raise RuntimeError(err_msg)
-
         combinatrix = AppCore(self.config, ctx, os.environ["SDK_CALLBACK_URL"])
         output = combinatrix.run(params)
         # END run_combinatrix
