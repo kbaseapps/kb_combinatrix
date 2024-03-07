@@ -144,7 +144,6 @@ class AppCore:
             {
                 "report_object_name": "Combinatrix output",
                 "workspace_id": params["workspace_id"],
-                "direct_html_link_index": 0,
                 "html_links": {
                     "path": output_dir,
                     "name": REPORT_FILE_NAME,
