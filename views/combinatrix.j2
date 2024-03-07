@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" type="text/css" href="/narrative/static/style/style.min.css">
+    <link rel="stylesheet" type="text/css" href="/narrative/static/kbase/css/all_concat.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.datatables.net/v/bs-3.3.7/jq-3.7.0/jszip-3.10.1/dt-2.0.1/b-3.0.0/b-colvis-3.0.0/b-html5-3.0.0/fh-4.0.0/sc-2.4.0/sp-2.3.0/sr-1.4.0/datatables.min.css"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script
+        src="https://cdn.datatables.net/v/bs-3.3.7/jq-3.7.0/jszip-3.10.1/dt-2.0.1/b-3.0.0/b-colvis-3.0.0/b-html5-3.0.0/fh-4.0.0/sc-2.4.0/sp-2.3.0/sr-1.4.0/datatables.min.js"></script>
+
+    {#
+    <link
+        href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/fh-3.4.0/sc-2.3.0/sp-2.2.0/sr-1.3.0/datatables.min.css"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/fh-3.4.0/sc-2.3.0/sp-2.2.0/sr-1.3.0/datatables.min.js"></script>
+    #}
+    {#
+    <script src="https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js"></script> #}
+    <style>
+        .table-colvis-toggle {
+            font-weight: normal;
+            padding: .25rem;
+            background: #9ee;
+            margin-left: 1rem;
+        }
+
+        td.ds_0 {
+            background: #ece;
+        }
+
+        td.ds_1 {
+            background: #cee;
+        }
+
+        td.ds_2 {
+            background: #eec;
+        }
+
+        article {
+            margin: 1rem;
+        }
+
+        .dataset th {
+            line-height: 1.8;
+        }
+
+        .details {
+            font-weight: normal;
+        }
+
+        .kb-html-report {
+            padding: 0 2rem;
+        }
+
+        .kb-html-report>.panel {
+            border-width: 0;
+        }
+
+        .kb-html-report .nav.nav-tabs {
+            margin: 0 -2rem 1rem;
+            padding-left: 2rem;
+        }
+
+        .progress-bar-null {
+            background-color: #efefef;
+        }
+
+        .tabular {
+            overflow: hidden;
+            z-index: 1;
+            position: relative;
+        }
+
+        .tabular dl,
+        .tabular dt,
+        .tabular dd {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .tabular dt,
+        .tabular dd {
+            display: inline-block;
+            vertical-align: top;
+            padding: 12px 2%;
+            padding: 0.75rem 2%;
+            position: relative;
+            border-top: 1px solid #ccc;
+        }
+
+        .tabular dt {
+            width: 29%;
+        }
+
+        .tabular dd {
+            width: 69%;
+        }
+
+        .tabular dd+dd {
+            border-top-color: #fff;
+        }
+
+        .tabular dt:after,
+        .tabular dd:after {
+            content: " ";
+            position: absolute;
+            display: block;
+            left: -999em;
+            top: -2px;
+            bottom: 0;
+            right: -999em;
+            z-index: -1;
+        }
+
+        .tabular dd+dd {
+            margin-left: 30%;
+        }
+    </style>
+    <title>Combinatrix Demo</title>
+</head>
+
+<body>
+    <div class="container-fluid kb-html-report">
+        <div class="panel panel-default">
+            <h1>
+                Combinatrix Demo
+            </h1>
+
+            <ul class="nav nav-tabs" role="tablist" id="navigation">
+                <li class="nav-item active">
+                    <a class="nav-link" data-toggle="tab" role="tab" href="#join" id="join-tab" aria-controls="join"
+                        aria-selected="true" aria-expanded="true">Join Summary</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" role="tab" href="#table" id="table-tab" aria-controls="table"
+                        aria-selected="false">Combinatrix Results</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade active in" role="tabpanel" id="join" aria-labelledby="join-tab">
+
+                    <div class="panel panel-default">
+                        <div id="join_summary">
+                            <h3>Joins</h3>
+                            {% for join in join_params %}
+                            <p>{{ object_data[join["t1"]["ref"]]["info"]["name"] }} ({{ join["t1"]["ref"] }}) field "{{
+                                join["t1"]["field"] }}" to {{ object_data[join["t2"]["ref"]]["info"]["name"] }} ({{
+                                join["t2"]["ref"] }}) field "{{ join["t2"]["field"] }}"</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" role="tabpanel" id="table" aria-labelledby="table-tab">
+                    <table class="dataTable__table  table table-striped table-bordered " id="{{ table_id }}"
+                        style="width: 100%">
+                        <thead>
+                            <tr class="dataset"></tr>
+                            <tr class="headers"></tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module">
+    import * as d3 from "https://cdn.jsdelivr.net/npm/d3-fetch@3/+esm";
+
+    function trimDataType(inputString) {
+        const regexPattern = /.*?\.(.*?)-\d.?/;
+        // Use the replace method to apply the regex pattern.
+        return inputString.replace(regexPattern, '$1');
+    }
+
+    function arraysToObject(keys, values) {
+        if (keys.length !== values.length) {
+            throw new Error('Arrays must have the same length to be zipped into an object.');
+        }
+        const result = {};
+        keys.forEach((key, index) => {
+            result[key] = values[index];
+        });
+        return result;
+    }
+
+    function replaceSlash(inputString) {
+        return inputString.replace(/\//g, '_');
+    }
+
+    function compareStrings(string1, string2, stringList) {
+        return stringList.indexOf(string1) - stringList.indexOf(string2) > 0 ? ["t2", "t1"] : ["t1", "t2"];
+    }
+
+    function trimRef(inputString) {
+        const index = inputString.indexOf('__');
+        // Check if '__' is found
+        if (index !== -1) {
+            // Extract the substring starting from the index after '__'
+            return inputString.substring(index + 2);
+        }
+        return inputString
+    }
+
+    function findNonMembers(listOfLists, secondList, position) {
+        // Extract the first element of each list
+        const relevantElements = listOfLists.map(list => list[position]);
+        return secondList.map(item => item.id).filter(item => !relevantElements.includes(item));
+    }
+
+    function findJoinsAndRootNodes(datasets, joinList, colOrder) {
+        const relWithDataset = {}
+
+        // Iterate through join criteria
+        joinList.forEach(join => {
+            const ordering = compareStrings(join.t1.ref, join.t2.ref, colOrder)
+            const refA = join[ordering[0]].ref,
+                refB = join[ordering[1]].ref,
+                datasetA = datasets[refA],
+                datasetB = datasets[refB],
+                fieldA = join[ordering[0]].field,
+                fieldB = join[ordering[1]].field
+
+            const joins = [];
+            datasetA.forEach(itemA => {
+                // let match = false
+                datasetB.forEach(itemB => {
+                    if (itemA[fieldA] === itemB[fieldB]) {
+                        // match = true
+                        // Record the join
+                        joins.push({ itemA, itemB });
+
+                        // Record relationship
+                        const keyA = itemA.id;
+                        const keyB = itemB.id;
+                        relWithDataset[`${refA}__${keyA}`] = relWithDataset[`${refA}__${keyA}`] || {};
+                        relWithDataset[`${refA}__${keyA}`][`${refB}__${keyB}`] = true
+                    }
+                });
+            });
+        });
+
+        const tripletList = []
+        datasets[colOrder[0]].forEach((item) => {
+            // look for it in relWithDataset
+            if (relWithDataset[`${colOrder[0]}__${item.id}`]) {
+                // for each key, see if it has any children
+                for (const child in relWithDataset[`${colOrder[0]}__${item.id}`]) {
+                    if (relWithDataset[child]) {
+                        for (const grandchild in relWithDataset[child]) {
+                            tripletList.push([item.id, trimRef(child), trimRef(grandchild)])
+                        }
+                    }
+                    else {
+                        console.log(`no matches for ${child}`)
+                    }
+                }
+            }
+            else {
+                console.log(`no matches for ${colOrder[0]}__${item.id}`)
+            }
+        })
+
+        let position = 0
+        for (const ds of colOrder) {
+            findNonMembers(tripletList, refs[ds], position)
+        }
+
+        return tripletList
+    }
+
+    const refs = {}
+    const tableId = "{{ table_id }}";
+
+    // once we have the template data, load up the CSV files
+    const datasetInfo = {{ object_data | tojson }},
+    joinData = {{ join_params | tojson }};
+    for (const ref in datasetInfo) {
+        refs[ref] = await d3.dsv(",", datasetInfo[ref].file)
+    }
+    const refsById = {}
+
+    for (const ref in refs) {
+        refsById[ref] = new Map(refs[ref].map((item) => [item.id, item]))
+    }
+
+    const tableCols = {}
+    const lookupTables = {}
+    const defaultCols = {
+        'SampleSet': ['id', 'name'],
+        'Matrix': ['row_id', 'value'], // 'column_id', 'value']
+    }
+
+    const datasetOrder = [joinData[0].t1.ref]
+    for (const join of joinData) {
+        datasetOrder.push(join.t2.ref)
+    }
+    const tripletList = findJoinsAndRootNodes(refs, joinData, datasetOrder)
+
+    const matches = {}
+
+    joinData.forEach((join) => {
+
+        // make lookup tables for the 't2' and 't1' entries
+        ['t1', 't2'].forEach((dir) => {
+            const ref = join[dir].ref
+            const field = join[dir].field
+            const objList = refs[ref]
+            if (!lookupTables[ref]) {
+                lookupTables[ref] = {}
+            }
+            if (!lookupTables[ref][field]) {
+                const map = new Map()
+                refs[ref].forEach(item => {
+                    if (!map.has(item[field])) {
+                        map.set(item[field], [item]);
+                    }
+                    else {
+                        map.get(item[field]).push(item)
+                    }
+                })
+                lookupTables[ref][field] = map
+            }
+        })
+
+        const refFrom = join.t1.ref,
+            refTo = join.t2.ref,
+            listFrom = refs[join.t1.ref],
+            listTo = refs[join.t2.ref],
+            fieldFrom = join.t1.field,
+            fieldTo = join.t2.field,
+            lookupFrom = lookupTables[join.t1.ref][join.t1.field],
+            lookupTo = lookupTables[join.t2.ref][join.t2.field]
+
+        // (1) All entries in listFrom where From.fieldFrom == To.fieldTo
+        matches['inFrom'] = listFrom.filter(itemFrom => lookupTo.has(itemFrom[fieldFrom])).flatMap(itemFrom => lookupTo.get(itemFrom[fieldFrom]));
+
+        // (2) Entries in list From where there is no match with To.fieldTo
+        matches['noTo'] = listFrom.filter(itemFrom => !lookupTo.has(itemFrom[fieldFrom]));
+
+        // (3) Entries in list To where there are no matches with list From
+        matches['noFrom'] = listTo.filter(itemTo => !lookupFrom.has(itemTo[fieldTo]));
+
+        const outputStr = `<h4>${datasetInfo[refFrom].info.name} (${datasetInfo[refFrom].info.type} , ${refFrom}) field "${join.t1.field}" and ${datasetInfo[refTo].info.name} (${datasetInfo[refTo].info.type} , ${refTo}) field "${join.t2.field}"</h4>`
+            + `<p>${refs[join.t1.ref].length} items in ${join.t1.ref}</p>`
+            + `<p>${refs[join.t2.ref].length} items in ${join.t2.ref}</p>`
+            + `<ul><li>${matches['inFrom'].length} matches found between ${join.t1.ref} and ${join.t2.ref}</li>`
+            + `<li>${matches['noFrom'].length} unmatched items in ${join.t1.ref}</li>`
+            + `<li>${matches['noTo'].length} unmatched items in ${join.t2.ref}</li></ul>`
+        const div = document.createElement('div')
+        div.innerHTML = outputStr
+        document.querySelector('#join_summary').appendChild(div)
+    })
+
+    const topRow = []
+    const bottomRow = []
+    const colString = {}
+    const allCols = datasetOrder.flatMap((ds, ix) => {
+        const dsType = datasetInfo[ds].info.type;
+        const hdr = document.createElement('th')
+        hdr.innerHTML = `${datasetInfo[ds].info.name}  <span class="table-colvis-toggle" data-colgroup="ds_${replaceSlash(ds)}">toggle all cols</span><br><span class="details">${datasetInfo[ds].info.type}, ${ds}</span>`
+        // hdr.innerHTML = `${ds}  <span class="table-colvis-toggle" data-colgroup="ds_${replaceSlash(ds)}">toggle all cols</span>`
+        colString[ds] = ""
+        if (dsType.indexOf('Matrix') === -1) {
+            // this is a sampleset
+            hdr.colSpan = refs[ds].columns.length
+            document.querySelector(`#${tableId} thead .dataset`).append(hdr)
+            topRow.push(hdr)
+            return refs[ds].columns.map((el) => {
+                const coreCol = defaultCols.SampleSet.includes(el);
+                const th = document.createElement('th')
+                th.classList = [`ds_${ix}`, `ds_${replaceSlash(ds)}`, dsType, el, coreCol ? 'core' : 'extra']
+                document.querySelector(`#${tableId} thead .headers`).append(th)
+                return {
+                    data: `${ds}.${el}`,
+                    title: el,
+                    className: `ds_${ix} ds_${replaceSlash(ds)} ${dsType} ${el} ${coreCol ? 'core' : 'extra'}`,
+                    visible: coreCol
+                }
+            })
+        }
+        else {
+            // matrix
+            hdr.colSpan = refs[ds].columns.length - 1
+            document.querySelector(`#${tableId} thead .dataset`).append(hdr)
+            topRow.push(hdr)
+            return refs[ds].columns.filter((el) => el !== 'id').map((el) => {
+                const coreCol = defaultCols.Matrix.includes(el);
+                const th = document.createElement('th')
+                th.classList = [`ds_${ix}`, `ds_${replaceSlash(ds)}`, dsType, el, coreCol ? 'core' : 'extra']
+                document.querySelector(`#${tableId} thead .headers`).append(th)
+                return {
+                    data: `${ds}.${el}`,
+                    title: el,
+                    className: `ds_${ix} ds_${replaceSlash(ds)} ${dsType} ${el} ${coreCol ? 'core' : 'extra'}`,
+                    visible: coreCol
+                }
+            })
+        }
+    })
+
+    const table = new DataTable(`#${tableId}`, {
+        data: tripletList.map((triplet) => {
+            const obj = arraysToObject(datasetOrder, triplet);
+            const output = {}
+            for (const ds in obj) {
+                const objId = obj[ds]
+                output[ds] = refsById[ds].get(objId)
+            }
+            return output
+        }),
+        autoWidth: true,
+        destroy: true,
+        columns: allCols,
+        // dom: '<"dt_top"if>rt<"dt_bottom">',
+        // dom: "Bfrtipl",
+        dom: "Bfrti",
+        buttons: [
+            { text: "Downloads", className: "disabled", enabled: false },
+            { extend: "csv", text: "CSV", extension: ".csv" },
+            { extend: "csv", text: "TSV", fieldSeparator: "\\t", extension: ".tsv" },
+            {
+                text: "JSON", action: function (e, dt, button, config) {
+                    $.fn.dataTable.fileSave(
+                        new Blob([JSON.stringify(dt.buttons.exportData())]),
+                        "Export.json"
+                    );
+                },
+            },
+        ],
+        // lengthMenu: [[25, 50, 100], [25, 50, 100]],
+        paging: false,
+        scrollX: true,
+        scrollY: "1000px",
+        scrollCollapse: true,
+    });
+
+    document.querySelectorAll('.table-colvis-toggle').forEach((el) => {
+        el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const className = e.target.getAttribute('data-colgroup');
+            table.columns(`.${className}.extra`).visible(!table.column(`.${className}.extra`).visible());
+            table.draw();
+        });
+    });
+
+    $('#navigation li:first-child a').tab('show');
+</script>
+
+</html>

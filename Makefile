@@ -6,7 +6,6 @@ DIR = $(shell pwd)
 LIB_DIR = lib
 SCRIPTS_DIR = scripts
 TEST_DIR = test
-LBIN_DIR = bin
 EXECUTABLE_SCRIPT_NAME = run_$(SERVICE_CAPS)_async_job.sh
 STARTUP_SCRIPT_NAME = start_server.sh
 TEST_SCRIPT_NAME = run_tests.sh
@@ -28,7 +27,7 @@ compile:
 
 set-executable:
 	chmod +x $(SCRIPTS_DIR)/entrypoint.sh
-	chmod +x $(LBIN_DIR)/$(EXECUTABLE_SCRIPT_NAME)
+	chmod +x $(SCRIPTS_DIR)/$(EXECUTABLE_SCRIPT_NAME)
 	chmod +x $(SCRIPTS_DIR)/$(STARTUP_SCRIPT_NAME)
 	chmod +x $(TEST_DIR)/$(TEST_SCRIPT_NAME)
 

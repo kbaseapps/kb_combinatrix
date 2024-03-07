@@ -131,6 +131,5 @@ package-lock.json
 app.py
 test_local/
 scratch/
-views/
 js/
 test/data/raw/

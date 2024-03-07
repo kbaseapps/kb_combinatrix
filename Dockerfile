@@ -20,7 +20,6 @@ RUN apk --update add uwsgi-python3 && \
 
 ENV PYTHONPATH="/kb/module/lib:$PYTHONPATH"
 WORKDIR /kb/module
-
 ENTRYPOINT [ "./scripts/entrypoint.sh" ]
 
 CMD []

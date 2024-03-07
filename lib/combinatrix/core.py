@@ -18,9 +18,12 @@ from combinatrix.converter import (
 )
 from combinatrix.fetcher import DataFetcher
 from combinatrix.param_checker import check_params
+from combinatrix.renderer import render_template
 from combinatrix.util import get_data_type, log_this, remove_special_chars
 from installed_clients.KBaseReportClient import KBaseReport
 
+J2_SUFFIX = ".j2"
+REPORT_FILE_NAME = "report.html"
 
 class AppCore:
     """Class for fetching and combining datasets."""
@@ -68,29 +71,38 @@ class AppCore:
         join_params = check_params(params)
         # End timer and print duration
         timing["check_params"] = f"{time.time() - start_time:.2f} seconds"
+        print(f"Check params: {timing["check_params"]}s")
 
         # Start timer for data fetching
         start_time = time.time()
         fetched_data = fetcher.fetch_objects_by_ref(sorted(join_params[REFS]))
         # End timer and print duration
         timing["fetch_objs"] = f"{time.time() - start_time:.2f} seconds"
+        print(f"fetch objects: {timing["fetch_objs"]}s")
 
         # Start timer for data conversion
         start_time = time.time()
         standardised_data = convert_data(fetched_data)
         # End timer and print duration
         timing["convert"] = f"{time.time() - start_time:.2f} seconds"
+        print(f"convert data: {timing["convert"]}s")
 
         # Start timer for data combining
         start_time = time.time()
         resultset = combine_data(join_params, standardised_data)
         # End timer and print duration
         timing["combine"] = f"{time.time() - start_time:.2f} seconds"
+        print(f"combine data: {timing["combine"]}s")
+
+        output_dir = os.path.join(self.config["scratch"], "output")
+        # create the dir if it does not exist
+        os.makedirs(output_dir, exist_ok=True)
 
         for ref in standardised_data:
             csv_file_name = f"{remove_special_chars(ref)}.csv"
-            outfile = os.path.join(self.config["scratch"], csv_file_name)
-            standardised_data[ref]["csv"] = save_as_csv(standardised_data[ref], outfile)
+            outfile = os.path.join(output_dir, csv_file_name)
+            save_as_csv(standardised_data[ref], outfile)
+            standardised_data[ref]["csv_file"] = csv_file_name
 
         # export data for displaying in datatables
         template_data = {
@@ -98,7 +110,7 @@ class AppCore:
             "object_data": {
                 ref: {
                     "info": standardised_data[ref][INFO],
-                    "file": standardised_data[ref]["csv"],
+                    "file": standardised_data[ref]["csv_file"],
                     "display": {
                         "type": get_data_type(standardised_data[ref]),
                         KEYS: (
@@ -117,33 +129,26 @@ class AppCore:
             },
         }
 
+        # for local / development use only
         if "no_report" in params and params["no_report"]:
             return {
                 # dump the data structure as JSON
                 "template_data": log_this(self.config, "template_data", template_data),
-                **{ref: standardised_data[ref]["csv"] for ref in standardised_data},
+                **{ref: standardised_data[ref]["csv_file"] for ref in standardised_data},
             }
+
+        template_output_path = os.path.join(output_dir, REPORT_FILE_NAME)
+        render_template(template_output_path, template_data)
 
         report_info: dict[str, Any] = reporter.create_extended_report(
             {
                 "report_object_name": "Combinatrix output",
                 "workspace_id": params["workspace_id"],
-                "template": {
-                    "template_file": "path/to/template",
-                    "template_data_json": template_data,
-                },
-                # html_links: (optional list of dicts) HTML files to attach and display in the report (see the additional information below)
-                # direct_html_link_index: (optional integer) index in html_links that you want to use as the main/default report view
-                # message: (optional string) basic result message to show in the report
-                # report_object_name: (optional string) a name to give the workspace object that stores the report.
-                # workspace_id: (optional integer) id of your workspace. Preferred over workspace_name as it's immutable. Required if workspace_name is absent.
-                # workspace_name: (optional string) string name of your workspace. Requried if workspace_id is absent.
-                # direct_html: (optional string) raw HTML to show in the report
-                # objects_created: (optional list of WorkspaceObject) data objects that were created as a result of running your app, such as assemblies or genomes
-                # warnings: (optional list of strings) any warnings messages generated from running the app
-                # file_links: (optional list of dicts) files to attach to the report (see the valid key/vals below)
-                # html_window_height: (optional float) fixed pixel height of your report view
-                # summary_window_height: (optional float) fixed pixel height of the summary within your report
+                "direct_html_link_index": 0,
+                "html_links": {
+                    "path": output_dir,
+                    "name": REPORT_FILE_NAME,
+                }
             }
         )  # type: ignore
         return {
