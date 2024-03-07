@@ -71,28 +71,28 @@ class AppCore:
         join_params = check_params(params)
         # End timer and print duration
         timing["check_params"] = f"{time.time() - start_time:.2f} seconds"
-        print(f"Check params: {timing["check_params"]}s")
+        print(f"Check params: {timing["check_params"]}")
 
         # Start timer for data fetching
         start_time = time.time()
         fetched_data = fetcher.fetch_objects_by_ref(sorted(join_params[REFS]))
         # End timer and print duration
         timing["fetch_objs"] = f"{time.time() - start_time:.2f} seconds"
-        print(f"fetch objects: {timing["fetch_objs"]}s")
+        print(f"fetch objects: {timing["fetch_objs"]}")
 
         # Start timer for data conversion
         start_time = time.time()
         standardised_data = convert_data(fetched_data)
         # End timer and print duration
         timing["convert"] = f"{time.time() - start_time:.2f} seconds"
-        print(f"convert data: {timing["convert"]}s")
+        print(f"convert data: {timing["convert"]}")
 
         # Start timer for data combining
         start_time = time.time()
         resultset = combine_data(join_params, standardised_data)
         # End timer and print duration
         timing["combine"] = f"{time.time() - start_time:.2f} seconds"
-        print(f"combine data: {timing["combine"]}s")
+        print(f"combine data: {timing["combine"]}")
 
         output_dir = os.path.join(self.config["scratch"], "output")
         # create the dir if it does not exist
@@ -151,6 +151,7 @@ class AppCore:
                 }
             }
         )  # type: ignore
+
         return {
             "report_name": report_info["name"],
             "report_ref": report_info[REF],
