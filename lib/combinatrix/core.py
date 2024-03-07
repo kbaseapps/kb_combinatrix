@@ -1,7 +1,7 @@
 """Fetches, combines, masticates, and spits out the appropriate data structure."""
-
 import os
 import time
+from datetime import datetime
 from typing import Any
 
 from combinatrix.combination_harvester import combine_data
@@ -140,9 +140,14 @@ class AppCore:
         template_output_path = os.path.join(output_dir, REPORT_FILE_NAME)
         render_template(template_output_path, template_data)
 
+        # Get current date and time
+        now = datetime.now(tz=None)
+
+        # Format the date and time
+        date_time_str = now.strftime("%Y%m%d_%H%M%S")
         report_info: dict[str, Any] = reporter.create_extended_report(
             {
-                "report_object_name": "Combinatrix output",
+                "report_object_name": f"combinatrix_output_{date_time_str}",
                 "workspace_id": params["workspace_id"],
                 "html_links": [{
                     "path": output_dir,
