@@ -147,7 +147,8 @@ class AppCore:
                 "html_links": [{
                     "path": output_dir,
                     "name": REPORT_FILE_NAME,
-                }]
+                }],
+                "direct_html_link_index": 0
             }
         )  # type: ignore
 
