@@ -144,10 +144,10 @@ class AppCore:
             {
                 "report_object_name": "Combinatrix output",
                 "workspace_id": params["workspace_id"],
-                "html_links": {
+                "html_links": [{
                     "path": output_dir,
                     "name": REPORT_FILE_NAME,
-                }
+                }]
             }
         )  # type: ignore
 
