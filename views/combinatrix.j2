@@ -425,7 +425,7 @@
         // once we have the template data, load up the CSV files
         const refs = {}
         for (const ref in datasetInfo) {
-            refs[ref] = await d3.dsv(",", '/static/data/' + datasetInfo[ref].file)
+            refs[ref] = await d3.dsv(",", datasetInfo[ref].file)
         }
 
         // index ref data by ID
