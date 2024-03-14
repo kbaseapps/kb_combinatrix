@@ -35,6 +35,13 @@ def validate_params(params: dict[str, Any], max_refs: int = MAX_REFS) -> dict[st
     joins = []
     refs = set()
     reqd_fields_by_ref = {}
+    auto_convert = {
+        "column": "column_id",
+        "row": "row_id",
+        "id": "name",
+        "col_id": "column_id",
+        "col": "column_id",
+    }
 
     if not params or JOIN_LIST not in params:
         err_msg = f"{PARAM_ERROR_MESSAGE}no '{JOIN_LIST}' parameter found"
@@ -55,10 +62,14 @@ def validate_params(params: dict[str, Any], max_refs: int = MAX_REFS) -> dict[st
                     )
                     has_errors = True
                     continue
+
                 # normalise the name - convert to lowercase, convert spaces to _
-                join_data[tx][f_name] = re.sub(
-                    MULTISPACE_REGEX, "_", val.strip().lower()
-                )
+                field_name = re.sub(MULTISPACE_REGEX, "_", val.strip().lower())
+                if field_name in auto_convert:
+                    field_name = auto_convert[field_name]
+
+                join_data[tx][f_name] = field_name
+
                 if f_name == REF:
                     refs.update([join_data[tx][REF]])
 

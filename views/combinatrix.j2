@@ -246,7 +246,7 @@
             if (relWithDataset[`${colOrder[0]}__${item.id}`]) {
                 // for each key, see if it has any children
                 for (const child in relWithDataset[`${colOrder[0]}__${item.id}`]) {
-                    if (joinList.length === 3) {
+                    if (joinList.length === 2) {
                         if (relWithDataset[child]) {
                             for (const grandchild in relWithDataset[child]) {
                                 comboList.push([item.id, trimRef(child), trimRef(grandchild)])

@@ -46,38 +46,42 @@ FIELD_C = "Mr Blobby"
 FIELD_C_EDIT = "mr_blobby"
 FIELD_AMPL = "some_other_field"
 
+SSA = "SAMPLESET_A"
+SSB = "SAMPLESET_B"
+AMP = "AMPLICON"
+
 VALID_JOIN_DICT_A = {
-    f"{T1}_{REF}": TEST_UPA["SAMPLESET_A"],
+    f"{T1}_{REF}": TEST_UPA[SSA],
     f"{T1}_{FIELD}": FIELD_A,
-    f"{T2}_{REF}": TEST_UPA["AMPLICON"],
+    f"{T2}_{REF}": TEST_UPA[AMP],
     f"{T2}_{FIELD}": FIELD_AMPL,
 }
 
 VALID_JOIN_DICT_B = {
-    f"{T1}_{REF}": TEST_UPA["SAMPLESET_B"],
+    f"{T1}_{REF}": TEST_UPA[SSB],
     f"{T1}_{FIELD}": "    " + FIELD_B + "\n\r\n",
-    f"{T2}_{REF}": "   " + TEST_UPA["SAMPLESET_A"] + "  \n\n\n",
+    f"{T2}_{REF}": "   " + TEST_UPA[SSA] + "  \n\n\n",
     f"{T2}_{FIELD}": FIELD_C,
 }
 
 VALID_JOIN_DICT_A_CLEANED = {
-    T1: {REF: TEST_UPA["SAMPLESET_A"], FIELD: FIELD_A},
-    T2: {REF: TEST_UPA["AMPLICON"], FIELD: FIELD_AMPL},
+    T1: {REF: TEST_UPA[SSA], FIELD: FIELD_A},
+    T2: {REF: TEST_UPA[AMP], FIELD: FIELD_AMPL},
 }
 
 VALID_JOIN_DICT_B_CLEANED = {
-    T1: {REF: TEST_UPA["SAMPLESET_B"], FIELD: FIELD_B_EDIT},
-    T2: {REF: TEST_UPA["SAMPLESET_A"], FIELD: FIELD_C_EDIT},
+    T1: {REF: TEST_UPA[SSB], FIELD: FIELD_B_EDIT},
+    T2: {REF: TEST_UPA[SSA], FIELD: FIELD_C_EDIT},
 }
 
 VALID_JOIN_LIST_A_B_ORDERED = [
     {
-        T1: {REF: TEST_UPA["AMPLICON"], FIELD: FIELD_AMPL},
-        T2: {REF: TEST_UPA["SAMPLESET_A"], FIELD: FIELD_A},
+        T1: {REF: TEST_UPA[AMP], FIELD: FIELD_AMPL},
+        T2: {REF: TEST_UPA[SSA], FIELD: FIELD_A},
     },
     {
-        T1: {REF: TEST_UPA["SAMPLESET_A"], FIELD: FIELD_C_EDIT},
-        T2: {REF: TEST_UPA["SAMPLESET_B"], FIELD: FIELD_B_EDIT},
+        T1: {REF: TEST_UPA[SSA], FIELD: FIELD_C_EDIT},
+        T2: {REF: TEST_UPA[SSB], FIELD: FIELD_B_EDIT},
     },
 ]
 
@@ -193,15 +197,12 @@ def test_check_params_fail(params: dict[str, Any], app_core: AppCore) -> None:
                     JOIN_LIST: [VALID_JOIN_DICT_A, VALID_JOIN_DICT_B],
                 },
                 "output": {
-                    REFS: {
-                        TEST_UPA[ref]
-                        for ref in ["SAMPLESET_A", "AMPLICON", "SAMPLESET_B"]
-                    },
+                    REFS: {TEST_UPA[ref] for ref in [SSA, AMP, SSB]},
                     JOIN_LIST: [VALID_JOIN_DICT_A_CLEANED, VALID_JOIN_DICT_B_CLEANED],
                     REQD_FIELDS: {
-                        TEST_UPA["SAMPLESET_B"]: {FIELD_B_EDIT},
-                        TEST_UPA["SAMPLESET_A"]: {FIELD_A, FIELD_C_EDIT},
-                        TEST_UPA["AMPLICON"]: {FIELD_AMPL},
+                        TEST_UPA[SSB]: {FIELD_B_EDIT},
+                        TEST_UPA[SSA]: {FIELD_A, FIELD_C_EDIT},
+                        TEST_UPA[AMP]: {FIELD_AMPL},
                     },
                 },
                 "id": "despaced",
@@ -216,13 +217,13 @@ def test_check_params_fail(params: dict[str, Any], app_core: AppCore) -> None:
                     ],
                 },
                 "output": {
-                    REFS: {TEST_UPA["SAMPLESET_A"], TEST_UPA["AMPLICON"]},
+                    REFS: {TEST_UPA[SSA], TEST_UPA[AMP]},
                     JOIN_LIST: [
                         VALID_JOIN_DICT_A_CLEANED,
                     ],
                     REQD_FIELDS: {
-                        TEST_UPA["AMPLICON"]: {FIELD_AMPL},
-                        TEST_UPA["SAMPLESET_A"]: {FIELD_A},
+                        TEST_UPA[AMP]: {FIELD_AMPL},
+                        TEST_UPA[SSA]: {FIELD_A},
                     },
                 },
                 "id": "repeated_entry",
@@ -232,24 +233,76 @@ def test_check_params_fail(params: dict[str, Any], app_core: AppCore) -> None:
                     JOIN_LIST: [
                         VALID_JOIN_DICT_A,
                         {
-                            f"{T2}_{REF}": TEST_UPA["SAMPLESET_A"],
+                            f"{T2}_{REF}": TEST_UPA[SSA],
                             f"{T2}_{FIELD}": FIELD_A,
-                            f"{T1}_{REF}": TEST_UPA["AMPLICON"],
+                            f"{T1}_{REF}": TEST_UPA[AMP],
                             f"{T1}_{FIELD}": FIELD_AMPL,
                         },
                     ],
                 },
                 "output": {
-                    REFS: {TEST_UPA["SAMPLESET_A"], TEST_UPA["AMPLICON"]},
+                    REFS: {TEST_UPA[SSA], TEST_UPA[AMP]},
                     JOIN_LIST: [
                         VALID_JOIN_DICT_A_CLEANED,
                     ],
                     REQD_FIELDS: {
-                        TEST_UPA["AMPLICON"]: {FIELD_AMPL},
-                        TEST_UPA["SAMPLESET_A"]: {FIELD_A},
+                        TEST_UPA[AMP]: {FIELD_AMPL},
+                        TEST_UPA[SSA]: {FIELD_A},
                     },
                 },
                 "id": "ignore_reversed",
+            },
+            {
+                "input": {
+                    JOIN_LIST: [
+                        {
+                            f"{T2}_{REF}": TEST_UPA[SSA],
+                            f"{T2}_{FIELD}": "id",
+                            f"{T1}_{REF}": TEST_UPA[AMP],
+                            f"{T1}_{FIELD}": "col_id",
+                        },
+                    ],
+                },
+                "output": {
+                    REFS: {TEST_UPA[SSA], TEST_UPA[AMP]},
+                    JOIN_LIST: [
+                        {
+                            T2: {REF: TEST_UPA[SSA], FIELD: "name"},
+                            T1: {REF: TEST_UPA[AMP], FIELD: "column_id"},
+                        },
+                    ],
+                    REQD_FIELDS: {
+                        TEST_UPA[AMP]: {"column_id"},
+                        TEST_UPA[SSA]: {"name"},
+                    },
+                },
+                "id": "name_coercion",
+            },
+            {
+                "input": {
+                    JOIN_LIST: [
+                        {
+                            f"{T2}_{REF}": TEST_UPA[SSA],
+                            f"{T2}_{FIELD}": "row",
+                            f"{T1}_{REF}": TEST_UPA[AMP],
+                            f"{T1}_{FIELD}": "column",
+                        },
+                    ],
+                },
+                "output": {
+                    REFS: {TEST_UPA[SSA], TEST_UPA[AMP]},
+                    JOIN_LIST: [
+                        {
+                            T2: {REF: TEST_UPA[SSA], FIELD: "row_id"},
+                            T1: {REF: TEST_UPA[AMP], FIELD: "column_id"},
+                        },
+                    ],
+                    REQD_FIELDS: {
+                        TEST_UPA[AMP]: {"column_id"},
+                        TEST_UPA[SSA]: {"row_id"},
+                    },
+                },
+                "id": "more_name_coercion",
             },
         ]
     ),
@@ -483,14 +536,14 @@ def test_sort_params_incorrect_list_pair_order(param: dict[str, Any]) -> None:
                 "output": {
                     JOIN_LIST: VALID_JOIN_LIST_A_B_ORDERED,
                     REFS: {
-                        TEST_UPA["SAMPLESET_A"],
-                        TEST_UPA["SAMPLESET_B"],
-                        TEST_UPA["AMPLICON"],
+                        TEST_UPA[SSA],
+                        TEST_UPA[SSB],
+                        TEST_UPA[AMP],
                     },
                     REQD_FIELDS: {
-                        TEST_UPA["SAMPLESET_A"]: {FIELD_A, FIELD_C_EDIT},
-                        TEST_UPA["SAMPLESET_B"]: {FIELD_B_EDIT},
-                        TEST_UPA["AMPLICON"]: {FIELD_AMPL},
+                        TEST_UPA[SSA]: {FIELD_A, FIELD_C_EDIT},
+                        TEST_UPA[SSB]: {FIELD_B_EDIT},
+                        TEST_UPA[AMP]: {FIELD_AMPL},
                     },
                 },
             },
