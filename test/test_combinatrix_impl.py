@@ -106,9 +106,7 @@ def test_run_combinatrix(
         assert isinstance(report_args, dict)
         report_name = report_args.get("report_object_name")
         assert report_name is not None
-        report_name_regex = (
-            r"combinatrix_output_\d{4}-\d{2}-\d{2}_\d{2}:\d{2}:\d{2}_UTC"
-        )
+        report_name_regex = r"combinatrix_output_\d{4}-\d{2}-\d{2}_\d{6}_UTC"
         assert re.match(report_name_regex, report_name) is not None
 
         assert report_args.get("workspace_id") == WS_ID

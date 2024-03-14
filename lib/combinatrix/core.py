@@ -144,7 +144,7 @@ class AppCore:
         now = datetime.datetime.now(tz=datetime.UTC)
 
         # Format the date and time
-        date_time_str = now.strftime("%Y-%m-%d_%H:%M:%S_%Z")
+        date_time_str = now.strftime("%Y-%m-%d_%H%M%S_%Z")
         report_info: dict[str, Any] = reporter.create_extended_report(
             {
                 "report_object_name": f"combinatrix_output_{date_time_str}",
