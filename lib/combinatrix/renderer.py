@@ -9,7 +9,6 @@ J2_SUFFIX = ".j2"
 
 def render_template(file_path: str, template_data: dict[str, Any]) -> str:
     """Render the output page."""
-    # Initialize a Jinja2 Environment with the loader pointing to your templates directory
     env = Environment(
         loader=FileSystemLoader("./"),
         autoescape=select_autoescape(["html", "xml"]),

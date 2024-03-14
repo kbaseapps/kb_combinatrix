@@ -79,6 +79,25 @@ def resort_fieldnames(unsorted_fieldnames: list[str] | set[str]) -> list[str]:
     return fieldnames
 
 
+def create_output_dir(config: dict[str, Any]) -> str:
+    """Create a directory for the output from the combinatrix.
+
+    :param config: combinatrix config
+    :type config: dict[str, Any]
+    :return: path of the new directory
+    :rtype: str
+    """
+    scratch_dir = (
+        config["scratch"]
+        if os.path.isabs(config["scratch"])
+        else os.path.abspath(config["scratch"])
+    )
+    output_dir = os.path.join(scratch_dir, "output")
+    # create the dir if it does not exist
+    os.makedirs(output_dir, exist_ok=True)
+    return output_dir
+
+
 def log_this(config: dict[str, str], file_name: str, output_obj: dict | list) -> str:
     """Utility function for printing JSON data to a file.
 

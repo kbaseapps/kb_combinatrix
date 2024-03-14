@@ -1,7 +1,7 @@
 """Fetches, combines, masticates, and spits out the appropriate data structure."""
+import datetime
 import os
 import time
-from datetime import datetime
 from typing import Any
 
 from combinatrix.combination_harvester import combine_data
@@ -19,7 +19,7 @@ from combinatrix.converter import (
 from combinatrix.fetcher import DataFetcher
 from combinatrix.param_checker import check_params
 from combinatrix.renderer import render_template
-from combinatrix.util import get_data_type, log_this, remove_special_chars
+from combinatrix.util import create_output_dir, get_data_type, log_this, remove_special_chars
 from installed_clients.KBaseReportClient import KBaseReport
 
 J2_SUFFIX = ".j2"
@@ -94,9 +94,7 @@ class AppCore:
         timing["combine"] = f"{time.time() - start_time:.2f} seconds"
         print(f"combine data: {timing["combine"]}")
 
-        output_dir = os.path.join(self.config["scratch"], "output")
-        # create the dir if it does not exist
-        os.makedirs(output_dir, exist_ok=True)
+        output_dir = create_output_dir(self.config)
 
         for ref in standardised_data:
             csv_file_name = f"{remove_special_chars(ref)}.csv"
@@ -131,9 +129,11 @@ class AppCore:
 
         # for local / development use only
         if "no_report" in params and params["no_report"]:
+            # dump the data structure as JSON
+            log_this({"scratch": output_dir}, "template_data", template_data)
             return {
-                # dump the data structure as JSON
-                "template_data": log_this(self.config, "template_data", template_data),
+                "directory": output_dir,
+                "template_data": "template_data.json",
                 **{ref: standardised_data[ref]["csv_file"] for ref in standardised_data},
             }
 
@@ -141,10 +141,10 @@ class AppCore:
         render_template(template_output_path, template_data)
 
         # Get current date and time
-        now = datetime.now(tz=None)
+        now = datetime.datetime.now(tz=datetime.UTC)
 
         # Format the date and time
-        date_time_str = now.strftime("%Y%m%d_%H%M%S")
+        date_time_str = now.strftime("%Y-%m-%d_%H:%M:%S_%Z")
         report_info: dict[str, Any] = reporter.create_extended_report(
             {
                 "report_object_name": f"combinatrix_output_{date_time_str}",

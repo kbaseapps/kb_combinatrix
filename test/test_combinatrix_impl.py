@@ -1,11 +1,14 @@
 """Tests for the Combinatrix Impl."""
 
 import os
+import re
 from collections.abc import Callable, Generator
+from pathlib import PosixPath
 from test.conftest import body_match_vcr as vcr
 from typing import Any
 
 import pytest
+from combinatrix import renderer
 from combinatrix.CombinatrixImpl import combinatrix
 from combinatrix.constants import (
     FIELD,
@@ -72,6 +75,7 @@ def test_run_combinatrix_fail(context: dict[str, Any], config: dict[str, Any]) -
 SOURCE = "72724/21/1"
 SAMPLE = "72724/19/1"
 MATRIX = "72724/23/1"
+WS_ID = 12345
 
 
 @pytest.mark.usefixtures("_manage_env_var")
@@ -84,6 +88,7 @@ def test_run_combinatrix(
     config: dict[str, Any],
     context: dict[str, Any],
     monkeypatch: Callable,
+    tmp_path: PosixPath,
 ) -> None:
     """Test a run through of the app_core functionality."""
     expected = {"name": "some name", REF: "some ref"}
@@ -91,7 +96,7 @@ def test_run_combinatrix(
     def mock_create_ext_report(*args: list[Any]) -> dict[str, str]:
         """Mock of the create_extended_report method.
 
-        :param args: list of arguments. The first is the KBare Report instance.
+        :param args: list of arguments. The first is the KBase Report instance.
         :type args: list[Any]
         :return: mock report output
         :rtype: dict[str, str]
@@ -99,15 +104,38 @@ def test_run_combinatrix(
         (report, report_args) = args
         assert isinstance(report, KBaseReport)
         assert isinstance(report_args, dict)
-        assert report_args.get("report_object_name") == "Combinatrix output"
-        assert "template" in report_args
-        assert "template_data_json" in report_args.get("template", {})
-
-        object_data = (
-            report_args.get("template", {})
-            .get("template_data_json", {})
-            .get("object_data")
+        report_name = report_args.get("report_object_name")
+        assert report_name is not None
+        report_name_regex = (
+            r"combinatrix_output_\d{4}-\d{2}-\d{2}_\d{2}:\d{2}:\d{2}_UTC"
         )
+        assert re.match(report_name_regex, report_name) is not None
+
+        assert report_args.get("workspace_id") == WS_ID
+
+        assert "html_links" in report_args
+        assert isinstance(report_args.get("html_links"), list)
+        assert len(report_args.get("html_links")) == 1  # type: ignore
+        html_links = report_args["html_links"][0]  # type: ignore
+        assert html_links.get("name") == "report.html"
+        assert html_links.get("path").endswith("output")
+        assert report_args.get("direct_html_link_index") == 0
+
+        return expected
+
+    def render_template_wrapper(file_path: str, template_data: dict[str, Any]) -> str:
+        """Perform checks on input before executing the template render function.
+
+        :param file_path: template output file path
+        :type file_path: str
+        :param template_data: data for the template
+        :type template_data: dict[str, Any]
+        :return: template output file path
+        :rtype: str
+        """
+        assert file_path.endswith("report.html")
+        object_data = template_data.get("object_data")
+        assert object_data is not None
         assert set(object_data.keys()) == {SOURCE, SAMPLE, MATRIX}
 
         source_ids = {"16O.16C-unique-id", "16O.16W-unique-id", "18O.18C-unique-id"}
@@ -131,11 +159,17 @@ def test_run_combinatrix(
             assert f"{matrix_id[:9]}-unique-id" in sample_ids
 
         assert object_data[MATRIX]["display"][KEYS] is None
-        return expected
+        return renderer.render_template(file_path, template_data)
 
     # monkeypatch the `create_extended_report` method so that it doesn't get called
     monkeypatch.setattr(KBaseReport, "create_extended_report", mock_create_ext_report)
-    combi = combinatrix(config)
+
+    # monkeypatch the template rendering function to check the output is as expected
+    monkeypatch.setattr(renderer, "render_template", render_template_wrapper)
+
+    config_with_tmp_path = {**config, "scratch": tmp_path}
+
+    combi = combinatrix(config_with_tmp_path)
 
     with vcr.use_cassette(
         "test/data/cassettes/test_run.yaml",
@@ -157,7 +191,7 @@ def test_run_combinatrix(
                         f"{T1}_{FIELD}": "column_id",
                     },
                 ],
-                "workspace_id": 12345,
+                "workspace_id": WS_ID,
                 "no_report": param,
             },
         )
@@ -165,19 +199,25 @@ def test_run_combinatrix(
         if not param:
             assert output == [{"report_name": "some name", "report_ref": "some ref"}]
         else:
-            scratch_dir = (
-                config["scratch"]
-                if os.path.isabs(config["scratch"])
-                else os.path.abspath(config["scratch"])
-            )
             assert output == [
                 {
-                    "72724/19/1": f"{scratch_dir}/72724_19_1.csv",
-                    "72724/21/1": f"{scratch_dir}/72724_21_1.csv",
-                    "72724/23/1": f"{scratch_dir}/72724_23_1.csv",
-                    "template_data": f"{scratch_dir}/template_data.json",
+                    "directory": f"{tmp_path}/output",
+                    "72724/19/1": "72724_19_1.csv",
+                    "72724/21/1": "72724_21_1.csv",
+                    "72724/23/1": "72724_23_1.csv",
+                    "template_data": "template_data.json",
                 }
             ]
+            # ensure the paths exist
+            for f in [
+                "72724_19_1.csv",
+                "72724_21_1.csv",
+                "72724_23_1.csv",
+                "template_data.json",
+            ]:
+                file_path = os.path.join(tmp_path, "output", f)
+                assert os.path.exists(file_path)
+                assert os.path.isfile(file_path)
 
 
 def test_status(config: dict[str, Any]) -> None:

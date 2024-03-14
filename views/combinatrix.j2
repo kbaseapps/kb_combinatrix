@@ -16,17 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script
         src="https://cdn.datatables.net/v/bs-3.3.7/jq-3.7.0/jszip-3.10.1/dt-2.0.1/b-3.0.0/b-colvis-3.0.0/b-html5-3.0.0/fh-4.0.0/sc-2.4.0/sp-2.3.0/sr-1.4.0/datatables.min.js"></script>
-
-    {#
-    <link
-        href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/fh-3.4.0/sc-2.3.0/sp-2.2.0/sr-1.3.0/datatables.min.css"
-        rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script
-        src="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/fh-3.4.0/sc-2.3.0/sp-2.2.0/sr-1.3.0/datatables.min.js"></script>
-    #}
-    {#
-    <script src="https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js"></script> #}
+    <script src="https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js"></script>
     <style>
         .table-colvis-toggle {
             font-weight: normal;
@@ -250,19 +240,24 @@
             });
         });
 
-        const tripletList = []
+        const comboList = []
         datasets[colOrder[0]].forEach((item) => {
             // look for it in relWithDataset
             if (relWithDataset[`${colOrder[0]}__${item.id}`]) {
                 // for each key, see if it has any children
                 for (const child in relWithDataset[`${colOrder[0]}__${item.id}`]) {
-                    if (relWithDataset[child]) {
-                        for (const grandchild in relWithDataset[child]) {
-                            tripletList.push([item.id, trimRef(child), trimRef(grandchild)])
+                    if (joinList.length === 3) {
+                        if (relWithDataset[child]) {
+                            for (const grandchild in relWithDataset[child]) {
+                                comboList.push([item.id, trimRef(child), trimRef(grandchild)])
+                            }
+                        }
+                        else {
+                            console.log(`no matches for ${child}`)
                         }
                     }
                     else {
-                        console.log(`no matches for ${child}`)
+                        comboList.push([item.id, trimRef(child)])
                     }
                 }
             }
@@ -273,178 +268,277 @@
 
         let position = 0
         for (const ds of colOrder) {
-            findNonMembers(tripletList, refs[ds], position)
+            findNonMembers(comboList, datasets[ds], position)
         }
 
-        return tripletList
+        return comboList
     }
 
-    const refs = {}
-    const tableId = "{{ table_id }}";
+    function joinDatasets(datasets, refsById, joinConditions) {
 
-    // once we have the template data, load up the CSV files
-    const datasetInfo = {{ object_data | tojson }},
-    joinData = {{ join_params | tojson }};
-    for (const ref in datasetInfo) {
-        refs[ref] = await d3.dsv(",", datasetInfo[ref].file)
-    }
-    const refsById = {}
-
-    for (const ref in refs) {
-        refsById[ref] = new Map(refs[ref].map((item) => [item.id, item]))
-    }
-
-    const tableCols = {}
-    const lookupTables = {}
-    const defaultCols = {
-        'SampleSet': ['id', 'name'],
-        'Matrix': ['row_id', 'value'], // 'column_id', 'value']
-    }
-
-    const datasetOrder = [joinData[0].t1.ref]
-    for (const join of joinData) {
-        datasetOrder.push(join.t2.ref)
-    }
-    const tripletList = findJoinsAndRootNodes(refs, joinData, datasetOrder)
-
-    const matches = {}
-
-    joinData.forEach((join) => {
-
-        // make lookup tables for the 't2' and 't1' entries
-        ['t1', 't2'].forEach((dir) => {
-            const ref = join[dir].ref
-            const field = join[dir].field
-            const objList = refs[ref]
-            if (!lookupTables[ref]) {
-                lookupTables[ref] = {}
-            }
-            if (!lookupTables[ref][field]) {
-                const map = new Map()
-                refs[ref].forEach(item => {
-                    if (!map.has(item[field])) {
-                        map.set(item[field], [item]);
-                    }
-                    else {
-                        map.get(item[field]).push(item)
-                    }
-                })
-                lookupTables[ref][field] = map
+        const joinMaps = {}
+        joinConditions.forEach((join) => {
+            for (const tx in join) {
+                const ref = join[tx].ref,
+                    field = join[tx].field
+                if (!(joinMaps[ref])) {
+                    joinMaps[ref] = {}
+                }
+                joinMaps[ref][field] = new Map()
             }
         })
 
-        const refFrom = join.t1.ref,
-            refTo = join.t2.ref,
-            listFrom = refs[join.t1.ref],
-            listTo = refs[join.t2.ref],
-            fieldFrom = join.t1.field,
-            fieldTo = join.t2.field,
-            lookupFrom = lookupTables[join.t1.ref][join.t1.field],
-            lookupTo = lookupTables[join.t2.ref][join.t2.field]
-
-        // (1) All entries in listFrom where From.fieldFrom == To.fieldTo
-        matches['inFrom'] = listFrom.filter(itemFrom => lookupTo.has(itemFrom[fieldFrom])).flatMap(itemFrom => lookupTo.get(itemFrom[fieldFrom]));
-
-        // (2) Entries in list From where there is no match with To.fieldTo
-        matches['noTo'] = listFrom.filter(itemFrom => !lookupTo.has(itemFrom[fieldFrom]));
-
-        // (3) Entries in list To where there are no matches with list From
-        matches['noFrom'] = listTo.filter(itemTo => !lookupFrom.has(itemTo[fieldTo]));
-
-        const outputStr = `<h4>${datasetInfo[refFrom].info.name} (${datasetInfo[refFrom].info.type} , ${refFrom}) field "${join.t1.field}" and ${datasetInfo[refTo].info.name} (${datasetInfo[refTo].info.type} , ${refTo}) field "${join.t2.field}"</h4>`
-            + `<p>${refs[join.t1.ref].length} items in ${join.t1.ref}</p>`
-            + `<p>${refs[join.t2.ref].length} items in ${join.t2.ref}</p>`
-            + `<ul><li>${matches['inFrom'].length} matches found between ${join.t1.ref} and ${join.t2.ref}</li>`
-            + `<li>${matches['noFrom'].length} unmatched items in ${join.t1.ref}</li>`
-            + `<li>${matches['noTo'].length} unmatched items in ${join.t2.ref}</li></ul>`
-        const div = document.createElement('div')
-        div.innerHTML = outputStr
-        document.querySelector('#join_summary').appendChild(div)
-    })
-
-    const topRow = []
-    const bottomRow = []
-    const colString = {}
-    const allCols = datasetOrder.flatMap((ds, ix) => {
-        const dsType = datasetInfo[ds].info.type;
-        const hdr = document.createElement('th')
-        hdr.innerHTML = `${datasetInfo[ds].info.name}  <span class="table-colvis-toggle" data-colgroup="ds_${replaceSlash(ds)}">toggle all cols</span><br><span class="details">${datasetInfo[ds].info.type}, ${ds}</span>`
-        // hdr.innerHTML = `${ds}  <span class="table-colvis-toggle" data-colgroup="ds_${replaceSlash(ds)}">toggle all cols</span>`
-        colString[ds] = ""
-        if (dsType.indexOf('Matrix') === -1) {
-            // this is a sampleset
-            hdr.colSpan = refs[ds].columns.length
-            document.querySelector(`#${tableId} thead .dataset`).append(hdr)
-            topRow.push(hdr)
-            return refs[ds].columns.map((el) => {
-                const coreCol = defaultCols.SampleSet.includes(el);
-                const th = document.createElement('th')
-                th.classList = [`ds_${ix}`, `ds_${replaceSlash(ds)}`, dsType, el, coreCol ? 'core' : 'extra']
-                document.querySelector(`#${tableId} thead .headers`).append(th)
-                return {
-                    data: `${ds}.${el}`,
-                    title: el,
-                    className: `ds_${ix} ds_${replaceSlash(ds)} ${dsType} ${el} ${coreCol ? 'core' : 'extra'}`,
-                    visible: coreCol
+        for (const ref in joinMaps) {
+            for (const [id, _] of refsById[ref].entries()) {
+                for (const field in joinMaps[ref]) {
+                    const value = refsById[ref].get(id)[field];
+                    if (!(joinMaps[ref][field].has(value))) {
+                        joinMaps[ref][field].set(value, new Set())
+                    }
+                    joinMaps[ref][field].get(value).add(id)
                 }
-            })
-        }
-        else {
-            // matrix
-            hdr.colSpan = refs[ds].columns.length - 1
-            document.querySelector(`#${tableId} thead .dataset`).append(hdr)
-            topRow.push(hdr)
-            return refs[ds].columns.filter((el) => el !== 'id').map((el) => {
-                const coreCol = defaultCols.Matrix.includes(el);
-                const th = document.createElement('th')
-                th.classList = [`ds_${ix}`, `ds_${replaceSlash(ds)}`, dsType, el, coreCol ? 'core' : 'extra']
-                document.querySelector(`#${tableId} thead .headers`).append(th)
-                return {
-                    data: `${ds}.${el}`,
-                    title: el,
-                    className: `ds_${ix} ds_${replaceSlash(ds)} ${dsType} ${el} ${coreCol ? 'core' : 'extra'}`,
-                    visible: coreCol
-                }
-            })
-        }
-    })
-
-    const table = new DataTable(`#${tableId}`, {
-        data: tripletList.map((triplet) => {
-            const obj = arraysToObject(datasetOrder, triplet);
-            const output = {}
-            for (const ds in obj) {
-                const objId = obj[ds]
-                output[ds] = refsById[ds].get(objId)
             }
-            return output
-        }),
-        autoWidth: true,
-        destroy: true,
-        columns: allCols,
-        // dom: '<"dt_top"if>rt<"dt_bottom">',
-        // dom: "Bfrtipl",
-        dom: "Bfrti",
-        buttons: [
-            { text: "Downloads", className: "disabled", enabled: false },
-            { extend: "csv", text: "CSV", extension: ".csv" },
-            { extend: "csv", text: "TSV", fieldSeparator: "\\t", extension: ".tsv" },
-            {
-                text: "JSON", action: function (e, dt, button, config) {
-                    $.fn.dataTable.fileSave(
-                        new Blob([JSON.stringify(dt.buttons.exportData())]),
-                        "Export.json"
-                    );
-                },
-            },
-        ],
-        // lengthMenu: [[25, 50, 100], [25, 50, 100]],
-        paging: false,
-        scrollX: true,
-        scrollY: "1000px",
-        scrollCollapse: true,
-    });
+        }
 
+        // Function to perform an individual join between two datasets
+        const joinTwo = (ref1, field1, ref2, field2, valueSet, joinMaps) => {
+            // Function to remove keys from a map that are not in the intersection
+            const removeNonIntersectionKeys = (map, intersection) => {
+                for (let key of map.keys()) {
+                    if (!intersection.has(key)) {
+                        map.delete(key);
+                    }
+                }
+            };
+
+            // Function to update valueSet with values from map2 after the intersection
+            const updateValueSetFromMap = (map, intersection) => {
+                const newValues = new Set();
+                intersection.forEach(key => {
+                    const valueSet = map.get(key);
+                    valueSet.forEach(value => {
+                        newValues.add(value);
+                    });
+                });
+                return newValues;
+            };
+
+            const map1 = joinMaps[ref1][field1];
+            const map2 = joinMaps[ref2][field2];
+            const set1 = new Set(map1.keys());
+            const set2 = new Set(map2.keys());
+
+            // Calculate the intersection of two sets of keys
+            const intersection = new Set([...set1].filter(x => set2.has(x)));
+            // Remove keys from map1 and map2 that aren't in the intersection
+            removeNonIntersectionKeys(map1, intersection);
+            removeNonIntersectionKeys(map2, intersection);
+
+            // Update valueSet with values from map2 after calculating the intersection and cleaning maps
+            valueSet = updateValueSetFromMap(map2, intersection);
+
+            console.log(map1); // Expected: Maps updated to only include
+            const result = [];
+            idList.forEach(itemId => {
+
+                const matches = data2.filter(item2 => item1[field1] === item2[field2]);
+                matches.forEach(match => {
+                    result.push([item1, match]);
+                });
+            });
+            return result;
+        };
+
+        // Initial dataset based on the first join condition
+        let currentResult = datasets[joinConditions[0].t1.ref].map((el) => [el.id])
+
+        // let currentJoin = joinConditions.shift();
+        // let currentResult = joinTwo(datasets[currentJoin.t1.ref], currentJoin.t1.ref, currentJoin.t1.field, datasets[currentJoin.t2.ref], currentJoin.t2.field);
+
+        // Sequentially apply the rest of the join conditions
+        joinConditions.forEach(condition => {
+            currentResult = joinTwo(condition.t1.ref, condition.t1.field, condition.t2.ref, condition.t2.field, currentResult, joinMaps);
+        });
+
+        return currentResult;
+    }
+
+    function generateJoinSummary(joinData, refs) {
+        const lookupTables = {}
+        joinData.forEach((join) => {
+            const matches = {}
+
+            // make lookup tables for the 't2' and 't1' entries
+            ['t1', 't2'].forEach((dir) => {
+                const ref = join[dir].ref
+                const field = join[dir].field
+                const objList = refs[ref]
+                if (!lookupTables[ref]) {
+                    lookupTables[ref] = {}
+                }
+                if (!lookupTables[ref][field]) {
+                    const map = new Map()
+                    refs[ref].forEach(item => {
+                        if (!map.has(item[field])) {
+                            map.set(item[field], [item]);
+                        }
+                        else {
+                            map.get(item[field]).push(item)
+                        }
+                    })
+                    lookupTables[ref][field] = map
+                }
+            })
+
+            const refFrom = join.t1.ref,
+                refTo = join.t2.ref,
+                listFrom = refs[join.t1.ref],
+                listTo = refs[join.t2.ref],
+                fieldFrom = join.t1.field,
+                fieldTo = join.t2.field,
+                lookupFrom = lookupTables[join.t1.ref][join.t1.field],
+                lookupTo = lookupTables[join.t2.ref][join.t2.field]
+
+            // (1) All entries in listFrom where From.fieldFrom == To.fieldTo
+            matches['inFrom'] = listFrom.filter(itemFrom => lookupTo.has(itemFrom[fieldFrom])).flatMap(itemFrom => lookupTo.get(itemFrom[fieldFrom]));
+
+            // (2) Entries in list From where there is no match with To.fieldTo
+            matches['noTo'] = listFrom.filter(itemFrom => !lookupTo.has(itemFrom[fieldFrom]));
+
+            // (3) Entries in list To where there are no matches with list From
+            matches['noFrom'] = listTo.filter(itemTo => !lookupFrom.has(itemTo[fieldTo]));
+
+            const outputStr = `<h4>${datasetInfo[refFrom].info.name} (${datasetInfo[refFrom].info.type} , ${refFrom}) field "${join.t1.field}" and ${datasetInfo[refTo].info.name} (${datasetInfo[refTo].info.type} , ${refTo}) field "${join.t2.field}"</h4>`
+                + `<p>${refs[join.t1.ref].length} items in ${join.t1.ref}</p>`
+                + `<p>${refs[join.t2.ref].length} items in ${join.t2.ref}</p>`
+                + `<ul><li>${matches['inFrom'].length} matches found between ${join.t1.ref} and ${join.t2.ref}</li>`
+                + `<li>${matches['noFrom'].length} unmatched items in ${join.t1.ref}</li>`
+                + `<li>${matches['noTo'].length} unmatched items in ${join.t2.ref}</li></ul>`
+            const div = document.createElement('div')
+            div.innerHTML = outputStr
+            document.querySelector('#join_summary').appendChild(div)
+        })
+    }
+
+
+    async function main(datasetInfo, joinData, tableId) {
+        // once we have the template data, load up the CSV files
+        const refs = {}
+        for (const ref in datasetInfo) {
+            refs[ref] = await d3.dsv(",", '/static/data/' + datasetInfo[ref].file)
+        }
+
+        // index ref data by ID
+        const refsById = {}
+        for (const ref in refs) {
+            refsById[ref] = new Map(refs[ref].map((item) => [item.id, item]))
+        }
+
+        const defaultCols = {
+            'SampleSet': ['id', 'name'],
+            'Matrix': ['row_id', 'value'], // 'column_id', 'value']
+        }
+
+        const datasetOrder = [joinData[0].t1.ref]
+        for (const join of joinData) {
+            datasetOrder.push(join.t2.ref)
+        }
+
+        // Perform the join
+        // const joinedData = joinDatasets(refs, refsById, joinData);
+        // console.log(joinedData);
+
+        const comboList = findJoinsAndRootNodes(refs, joinData, datasetOrder)
+
+        const topRow = []
+        const bottomRow = []
+        const colString = {}
+        const allCols = datasetOrder.flatMap((ds, ix) => {
+            const dsType = datasetInfo[ds].info.type;
+            const hdr = document.createElement('th')
+            hdr.innerHTML = `${datasetInfo[ds].info.name}  <span class="table-colvis-toggle" data-colgroup="ds_${replaceSlash(ds)}">toggle all cols</span><br><span class="details">${datasetInfo[ds].info.type}, ${ds}</span>`
+            // hdr.innerHTML = `${ds}  <span class="table-colvis-toggle" data-colgroup="ds_${replaceSlash(ds)}">toggle all cols</span>`
+            colString[ds] = ""
+            if (dsType.indexOf('Matrix') === -1) {
+                // this is a sampleset
+                hdr.colSpan = refs[ds].columns.length
+                document.querySelector(`#${tableId} thead .dataset`).append(hdr)
+                topRow.push(hdr)
+                return refs[ds].columns.map((el) => {
+                    const coreCol = defaultCols.SampleSet.includes(el);
+                    const th = document.createElement('th')
+                    th.classList = [`ds_${ix}`, `ds_${replaceSlash(ds)}`, dsType, el, coreCol ? 'core' : 'extra']
+                    document.querySelector(`#${tableId} thead .headers`).append(th)
+                    return {
+                        data: `${ds}.${el}`,
+                        title: el,
+                        className: `ds_${ix} ds_${replaceSlash(ds)} ${dsType} ${el} ${coreCol ? 'core' : 'extra'}`,
+                        visible: coreCol
+                    }
+                })
+            }
+            else {
+                // matrix
+                hdr.colSpan = refs[ds].columns.length - 1
+                document.querySelector(`#${tableId} thead .dataset`).append(hdr)
+                topRow.push(hdr)
+                return refs[ds].columns.filter((el) => el !== 'id').map((el) => {
+                    const coreCol = defaultCols.Matrix.includes(el);
+                    const th = document.createElement('th')
+                    th.classList = [`ds_${ix}`, `ds_${replaceSlash(ds)}`, dsType, el, coreCol ? 'core' : 'extra']
+                    document.querySelector(`#${tableId} thead .headers`).append(th)
+                    return {
+                        data: `${ds}.${el}`,
+                        title: el,
+                        className: `ds_${ix} ds_${replaceSlash(ds)} ${dsType} ${el} ${coreCol ? 'core' : 'extra'}`,
+                        visible: coreCol
+                    }
+                })
+            }
+        })
+
+        return new DataTable(`#${tableId}`, {
+            data: comboList.map((triplet) => {
+                const obj = arraysToObject(datasetOrder, triplet);
+                const output = {}
+                for (const ds in obj) {
+                    const objId = obj[ds]
+                    output[ds] = refsById[ds].get(objId)
+                }
+                return output
+            }),
+            autoWidth: true,
+            destroy: true,
+            columns: allCols,
+            // dom: '<"dt_top"if>rt<"dt_bottom">',
+            // dom: "Bfrtipl",
+            dom: "Bfrti",
+            buttons: [
+                { text: "Downloads", className: "disabled", enabled: false },
+                { extend: "csv", text: "CSV", extension: ".csv" },
+                { extend: "csv", text: "TSV", fieldSeparator: "\\t", extension: ".tsv" },
+                {
+                    text: "JSON", action: function (e, dt, button, config) {
+                        $.fn.dataTable.fileSave(
+                            new Blob([JSON.stringify(dt.buttons.exportData())]),
+                            "Export.json"
+                        );
+                    },
+                },
+            ],
+            // lengthMenu: [[25, 50, 100], [25, 50, 100]],
+            paging: false,
+            scrollX: true,
+            scrollY: "1000px",
+            scrollCollapse: true,
+        });
+    }
+
+
+    const tableId = "{{ table_id }}";
+    const datasetInfo = {{ object_data | tojson }};
+    const joinData = {{ join_params | tojson }};
+    const table = await main(datasetInfo, joinData, tableId);
     document.querySelectorAll('.table-colvis-toggle').forEach((el) => {
         el.addEventListener('click', function (e) {
             e.stopPropagation();
@@ -452,6 +546,11 @@
             table.columns(`.${className}.extra`).visible(!table.column(`.${className}.extra`).visible());
             table.draw();
         });
+    });
+
+    // ensure that the columns adjust their width
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        table.columns.adjust();
     });
 
     $('#navigation li:first-child a').tab('show');
